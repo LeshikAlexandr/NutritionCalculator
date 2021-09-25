@@ -22,7 +22,7 @@ public class Product {
     private int calories;
     private int fat;
     private int protein;
-    private int carbonhydrates;
+    private int carbohydrates;
     @ManyToMany(mappedBy = "products")
     private List<DailyMenu> dailyMenus;
 }
