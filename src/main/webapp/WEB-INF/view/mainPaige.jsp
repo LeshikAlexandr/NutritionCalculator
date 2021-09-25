@@ -17,7 +17,7 @@
             <a href="/about-us">О нас</a>
         </th>
         <th>
-            <a href="/registration-or-authorization">Войти/Зарегистрироваться</a>
+            <a href="/registration">Войти/Зарегистрироваться</a>
         </th>
         <th>
             <a href="/my-profile">Мой профиль</a>
