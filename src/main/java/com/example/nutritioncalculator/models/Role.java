@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "roles")
 @Data
 @Builder
 @AllArgsConstructor
@@ -22,7 +21,10 @@ public class Role implements GrantedAuthority {
     private int id;
     private String name;
     @Transient
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "customer_role",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private Set<Customer> customers;
 
     public Role(int id) {
