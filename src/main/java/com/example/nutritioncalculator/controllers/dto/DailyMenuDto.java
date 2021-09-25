@@ -21,7 +21,7 @@ public class DailyMenuDto {
     private int generalCalories;
     private int generalProteins;
     private int generalFats = 0;
-    private int generalCarbonhydrates = 0;
+    private int generalCarbohydrates = 0;
     private LocalDate createdDate;
 
 }

@@ -1,8 +1,9 @@
 package com.example.nutritioncalculator.controllers.dto;
 
-import com.diplom.model.Activity;
-import com.diplom.model.Role;
-import com.diplom.model.Sex;
+
+import com.example.nutritioncalculator.models.Activity;
+import com.example.nutritioncalculator.models.Role;
+import com.example.nutritioncalculator.models.Sex;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

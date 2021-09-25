@@ -1,6 +1,6 @@
 package com.example.nutritioncalculator.controllers.dto;
 
-import com.diplom.model.Photo;
+import com.example.nutritioncalculator.models.Photo;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
