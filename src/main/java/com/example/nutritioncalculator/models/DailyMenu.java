@@ -38,7 +38,7 @@ public class DailyMenu {
     private int generalProteins;
     @Column(name = "general_fats")
     private int generalFats;
-    @Column(name = "general_carbonhydrates")
-    private int generalCarbonhydrates;
+    @Column(name = "general_сarbohydrates")
+    private int generalCarbohydrates;
 
 }
