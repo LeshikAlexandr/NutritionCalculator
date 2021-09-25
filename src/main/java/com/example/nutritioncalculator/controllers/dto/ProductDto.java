@@ -22,10 +22,10 @@ public class ProductDto {
     @Min(value = 0, message = "Количество белков не может быть меньше 0")
     private int protein;
     @Min(value = 0, message = "Количество углеводов не может быть меньше 0")
-    private int carbonhydrates;
+    private int carbohydrates;
     private int weight;
     private int factualCalories;
-    private int factualCarbonhydrates;
+    private int factualCarbohydrates;
     private int factualFat;
     private int factualProtein;
 
