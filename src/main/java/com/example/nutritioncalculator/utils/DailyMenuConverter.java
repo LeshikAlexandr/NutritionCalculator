@@ -1,7 +1,8 @@
 package com.example.nutritioncalculator.utils;
 
-import com.diplom.controller.dto.DailyMenuDto;
-import com.diplom.model.DailyMenu;
+
+import com.example.nutritioncalculator.controllers.dto.DailyMenuDto;
+import com.example.nutritioncalculator.models.DailyMenu;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
@@ -14,7 +15,7 @@ public class DailyMenuConverter {
                 .generalCalories(dailyMenu.getGeneralCalories())
                 .generalProteins(dailyMenu.getGeneralProteins())
                 .generalFats(dailyMenu.getGeneralFats())
-                .generalCarbonhydrates(dailyMenu.getGeneralCarbonhydrates())
+                .generalCarbohydrates(dailyMenu.getGeneralCarbohydrates())
                 .createdDate(dailyMenu.getCreatedDate())
                 .build();
     }
@@ -26,7 +27,7 @@ public class DailyMenuConverter {
                 .generalCalories(dailyMenuDto.getGeneralCalories())
                 .generalProteins(dailyMenuDto.getGeneralProteins())
                 .generalFats(dailyMenuDto.getGeneralFats())
-                .generalCarbonhydrates(dailyMenuDto.getGeneralCarbonhydrates())
+                .generalCarbohydrates(dailyMenuDto.getGeneralCarbohydrates())
                 .createdDate(dailyMenuDto.getCreatedDate())
                 .build();
     }

@@ -1,8 +1,9 @@
 package com.example.nutritioncalculator.utils;
 
-import com.diplom.controller.dto.CustomerDto;
-import com.diplom.controller.dto.CustomerRegistrationDto;
-import com.diplom.model.Customer;
+
+import com.example.nutritioncalculator.controllers.dto.CustomerDto;
+import com.example.nutritioncalculator.controllers.dto.CustomerRegistrationDto;
+import com.example.nutritioncalculator.models.Customer;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

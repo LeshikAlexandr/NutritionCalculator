@@ -1,7 +1,8 @@
 package com.example.nutritioncalculator.utils;
 
-import com.diplom.controller.dto.ProductDto;
-import com.diplom.model.Product;
+
+import com.example.nutritioncalculator.controllers.dto.ProductDto;
+import com.example.nutritioncalculator.models.Product;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
@@ -13,7 +14,7 @@ public class ProductConverter {
                 .id(product.getId())
                 .name(product.getName())
                 .nominalCalories(product.getCalories())
-                .carbonhydrates(product.getCarbonhydrates())
+                .carbohydrates(product.getCarbohydrates())
                 .fat(product.getFat())
                 .protein(product.getProtein())
                 .build();
@@ -25,7 +26,7 @@ public class ProductConverter {
                 .id(productDto.getId())
                 .name(productDto.getName())
                 .calories(productDto.getNominalCalories())
-                .carbonhydrates(productDto.getCarbonhydrates())
+                .carbohydrates(productDto.getCarbohydrates())
                 .fat(productDto.getFat())
                 .protein(productDto.getProtein())
                 .build();

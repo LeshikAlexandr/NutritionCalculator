@@ -1,6 +1,6 @@
 package com.example.nutritioncalculator.utils;
 
-import com.diplom.model.Eating;
+import com.example.nutritioncalculator.models.Eating;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 

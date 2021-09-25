@@ -1,7 +1,7 @@
 package com.example.nutritioncalculator.utils;
 
-import com.diplom.controller.dto.PostDto;
-import com.diplom.model.Post;
+import com.example.nutritioncalculator.controllers.dto.PostDto;
+import com.example.nutritioncalculator.models.Post;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
