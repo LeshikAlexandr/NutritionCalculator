@@ -22,7 +22,7 @@ public class DailyMenu {
     private int id;
     @Column(name = "created_date")
     private LocalDate createdDate;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "product_daily_menu",
             joinColumns = @JoinColumn(name = "daily_menu_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
