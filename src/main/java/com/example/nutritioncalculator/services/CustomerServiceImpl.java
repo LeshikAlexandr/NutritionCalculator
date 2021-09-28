@@ -11,6 +11,7 @@ import com.example.nutritioncalculator.repositories.CustomerRepository;
 import com.example.nutritioncalculator.repositories.RoleRepository;
 import com.example.nutritioncalculator.utils.CustomerConverter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,12 +27,16 @@ import static com.example.nutritioncalculator.utils.CustomerConverter.convertCus
 import static com.example.nutritioncalculator.utils.CustomerConverter.convertCustomerRegistrationDtoToCustomerEntity;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerServiceImpl implements CustomerService {
 
-    private final CustomerRepository customerRepository;
-    private final PasswordEncoder passwordEncoder;
-    private final RoleRepository roleRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private RoleRepository roleRepository;
 //    private final DailyMenuService dailyMenuService;
 //    private final DailyMenuRepository dailyMenuRepository;
 

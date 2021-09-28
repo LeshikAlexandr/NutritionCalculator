@@ -11,7 +11,7 @@ public interface PhotoRepository extends JpaRepository<Photo, Integer> {
 
     Optional<Photo> findByName(String name);
 
-    Optional<Photo> findByCustomer(int customerId);
+    Optional<Photo> findByCustomerId(int customerId);
 
     Optional<Photo> findByCustomerLogin(String login);
 }
