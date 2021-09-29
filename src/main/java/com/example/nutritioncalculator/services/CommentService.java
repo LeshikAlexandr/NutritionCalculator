@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CommentService {
 
-    void saveComment(MultipartFile file, CommentDto commentDto, String login);
+    void saveComment(MultipartFile file, CommentDto commentDto, String login, int postId);
 
     List<Comment> getAllComments();
 }
