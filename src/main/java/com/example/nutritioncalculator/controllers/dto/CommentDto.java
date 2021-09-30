@@ -18,4 +18,6 @@ public class CommentDto {
     private String text;
     private LocalDateTime createdDate;
     private CustomerDto customerDto;
+
+    private PostDto postDto;
 }
