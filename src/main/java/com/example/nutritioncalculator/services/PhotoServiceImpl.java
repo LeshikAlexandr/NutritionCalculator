@@ -60,12 +60,17 @@ public class PhotoServiceImpl implements PhotoService {
     }
 
     @Override
-    public Photo save(MultipartFile file) {
+    public Photo save(MultipartFile file, String login) {
+        if (file.getSize() == 0) {
+            return null;
+        }
         try {
             Files.copy(file.getInputStream(), this.photoDirectoryPath.resolve(file.getOriginalFilename()));
             Photo photo = new Photo();
             photo.setName(file.getOriginalFilename());
             photo.setUrl("/images" + file.getOriginalFilename());
+            photo.setCustomer(customerRepository.findCustomerByLogin(login)
+                    .orElseThrow(() -> new Exception("Не удалось найти фото, не существует пользователя с логином:" + login)));
             photoRepository.save(photo);
             return photo;
         } catch (Exception | IOException e) {

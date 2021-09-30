@@ -11,4 +11,6 @@ public interface CommentService {
     void saveComment(MultipartFile file, CommentDto commentDto, String login, int postId);
 
     List<Comment> getAllComments();
+
+    List<Comment> getCommentsFromPost(int postId);
 }

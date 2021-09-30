@@ -39,7 +39,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public void savePost(MultipartFile file, PostDto postDto, String login) {
         if (file.getSize() != 0) {
-            postDto.setPhoto(photoService.save(file));
+            postDto.setPhoto(photoService.save(file, login));
         }
         postDto.setCreatedDate(LocalDateTime.now());
         postDto.setCustomerDto(CustomerConverter.convertCustomerEntityToCustomerDto(customerRepository.findCustomerByLogin(login)

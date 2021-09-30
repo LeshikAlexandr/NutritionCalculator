@@ -11,5 +11,5 @@ public interface PhotoService {
 
     Photo getPhoto(int customerId);
 
-    Photo save(MultipartFile file);
+    Photo save(MultipartFile file, String login);
 }
