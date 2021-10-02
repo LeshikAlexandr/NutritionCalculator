@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
@@ -22,7 +24,7 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String addUser(@ModelAttribute("customer") CustomerRegistrationDto customerRegistrationDto,
+    public String addUser(@ModelAttribute("customer") @Valid CustomerRegistrationDto customerRegistrationDto,
                           BindingResult bindingResult, Model model) {
         System.out.println(customerRegistrationDto.getLogin());
         if (bindingResult.hasErrors()) {
