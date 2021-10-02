@@ -165,20 +165,25 @@
         <table cellpadding="0" cellspacing="0" border="0">
             <tbody>
             <c:forEach var="product" items="${products}">
-
-                <c:url var="updateButton" value="products/edit/${product.id}"></c:url>
-
                 <tr>
                     <td>${product.name}</td>
                     <td>${product.nominalCalories}</td>
                     <td>${product.protein}</td>
                     <td>${product.fat}</td>
                     <td>${product.carbohydrates}</td>
-                    <td><input type="button" value="Update" onclick="window.location.href = '${updateButton}'"></td>
                     <td>
-                        <form action="products/delete/${product.id}" method="post">
-                            <button type="submit" class="btn btn-outline-light">Удалить продукт</button>
-                        </form>
+                        <div class="center">
+                            <form:form class="pure-form pure-form-aligned" action="/products/update/${product.id}" method="get">
+                                <button type="submit" class="btn btn-outline-light">Редактировать продукт</button>
+                            </form:form>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="center">
+                            <form:form class="pure-form pure-form-aligned" action="/products/delete/${product.id}" method="delete">
+                                <button type="submit" class="btn btn-outline-light">Удалить продукт</button>
+                            </form:form>
+                        </div>
                     </td>
                 </tr>
             </c:forEach>

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Data
 @Builder
@@ -14,6 +15,7 @@ import javax.validation.constraints.Min;
 public class ProductDto {
 
     private int id;
+    @Size(min = 3, message = "Количество знаков должно быть не менее 3")
     private String name;
     @Min(value = 0, message = "Калорийность должна быть больше 0")
     private int nominalCalories;
