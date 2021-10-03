@@ -33,7 +33,7 @@ public class ProductController {
         return "products/new";
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public String create(@ModelAttribute("product") @Valid ProductDto productDto,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

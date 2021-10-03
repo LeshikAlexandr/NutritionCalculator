@@ -62,7 +62,7 @@
 <div class="navbar">
 </div>
 <div class="center">
-    <form:form class="pure-form pure-form-aligned" action="/products"  modelAttribute="product" method="post">
+    <form:form class="pure-form pure-form-aligned" action="/products/new"  modelAttribute="product" method="post">
         <fieldset>
             <div class="pure-control-group">
                 <label for="name">Название продукта: </label>
