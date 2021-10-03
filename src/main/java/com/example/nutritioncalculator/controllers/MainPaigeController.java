@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 
@@ -31,17 +30,7 @@ public class MainPaigeController {
         }
         model.addAttribute("posts", postService.getAllPosts());
         model.addAttribute("comments", commentService.getAllComments());
+        model.addAttribute("comment", new CommentDto());
         return "profile";
     }
-
-//    @PostMapping("/newComment/{id}")
-//    public String createComment(@ModelAttribute("comment") CommentDto commentDto,
-//                                @RequestParam(value = "file", required = false) MultipartFile file,
-//                                @PathVariable("id") int postId,
-//                                Principal principal) {
-//
-//        commentService.saveComment(file, commentDto, principal.getName(), postId);
-//        return "redirect:/profile";
-//    }
-
 }

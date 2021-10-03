@@ -12,4 +12,6 @@ public interface PostService {
 
     List<Post> getAllPosts();
 
+    void deletePost(int id);
+
 }

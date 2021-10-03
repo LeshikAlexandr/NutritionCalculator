@@ -7,27 +7,31 @@
 <body>
 <table>
     <c:forEach var="post" items="${posts}">
-        <tr>
-            <td>${post.text}</td>
-            <td>${post.createdDate}</td>
+    <tr>
+        <td>${post.text}</td>
+        <td>${post.createdDate}</td>
 
-            <c:forEach var="comment" items="${post.comments}">
-                ${comment.text}
-            </c:forEach>
-        </tr>
+        <c:forEach var="comment" items="${post.comments}">
+            ${comment.text}
+        </c:forEach>
+    </tr>
 </table>
-        <br>
-        <form action="posts/newComment/${post.id}" enctype="multipart/form-data" modelAttribute="comment" method="post">
-            Комментарий <input name="text"/>
-            <br><br>
-            Фото комментария <input type="file" name="file"/>
-            <br><br>
-            <input type="submit" value="Комментировать">
-        </form>
-        <br>
-    </c:forEach>
+<br>
+<form action="posts/newComment/${post.id}" enctype="multipart/form-data" modelAttribute="comment" method="post">
+    Комментарий <input name="text"/>
+    <form:errors path="text"/>
+    <br><br>
+    Фото комментария <input type="file" name="file"/>
+    <br><br>
+    <input type="submit" value="Комментировать">
+</form>
+<form:form action="/posts/delete/${post.id}" method="post">
+    <button type="submit" class="btn btn-outline-light">Удалить пост</button>
+</form:form>
+<br>
+</c:forEach>
 
-    <br>
+<br>
 <button onclick="window.location.href='/posts/new'">Click me</button>
 </body>
 </html>

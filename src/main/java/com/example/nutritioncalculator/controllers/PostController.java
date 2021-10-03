@@ -8,9 +8,11 @@ import com.example.nutritioncalculator.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -32,20 +34,33 @@ public class PostController {
     }
 
     @PostMapping("/new")
-    public String create(@ModelAttribute("post") PostDto postDto,
+    public String create(@ModelAttribute("post") @Valid PostDto postDto,
+                         BindingResult bindingResult,
                          @RequestParam(value = "file", required = false) MultipartFile file,
                          Principal principal) {
+        if (bindingResult.hasErrors()) {
+            return "posts/new";
+        }
         postService.savePost(file, postDto, principal.getName());
         return "redirect:/";
     }
 
     @PostMapping("/newComment/{id}")
-    public String createComment(@ModelAttribute("comment") CommentDto commentDto,
+    public String createComment(@ModelAttribute("comment") @Valid CommentDto commentDto,
+                                BindingResult bindingResult,
                                 @RequestParam(value = "file", required = false) MultipartFile file,
                                 @PathVariable("id") int postId,
                                 Principal principal) {
-
+        if (bindingResult.hasErrors()) {
+            return "redirect:/";
+        }
         commentService.saveComment(file, commentDto, principal.getName(), postId);
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deletePost(@PathVariable("id") Integer id) {
+        postService.deletePost(id);
         return "redirect:/";
     }
 }

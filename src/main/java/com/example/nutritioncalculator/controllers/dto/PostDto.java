@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 public class PostDto {
 
     private Photo photo;
+    @Size(min = 1, message = "Количество символов должно быть не менее 1")
     private String text;
     @DateTimeFormat(pattern = "MMMM dd, yyyy")
     private LocalDateTime createdDate;

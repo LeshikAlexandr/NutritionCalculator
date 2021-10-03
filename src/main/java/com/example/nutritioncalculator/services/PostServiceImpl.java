@@ -56,4 +56,9 @@ public class PostServiceImpl implements PostService {
                         .reversed())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void deletePost(int id) {
+        postRepository.deleteById(id);
+    }
 }

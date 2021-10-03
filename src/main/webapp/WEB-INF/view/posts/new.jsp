@@ -11,6 +11,7 @@
 <form:form action="/posts/new" enctype="multipart/form-data" modelAttribute="post" method="post">
 
     Текст <form:input path="text"/>
+    <form:errors path="text"/>
     <br><br>
     Фото поста <input type="file" name="file"/>
     <br><br>
