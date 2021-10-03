@@ -36,6 +36,16 @@ public class PostController {
                          @RequestParam(value = "file", required = false) MultipartFile file,
                          Principal principal) {
         postService.savePost(file, postDto, principal.getName());
-        return "redirect:/profile";
+        return "redirect:/";
+    }
+
+    @PostMapping("/newComment/{id}")
+    public String createComment(@ModelAttribute("comment") CommentDto commentDto,
+                                @RequestParam(value = "file", required = false) MultipartFile file,
+                                @PathVariable("id") int postId,
+                                Principal principal) {
+
+        commentService.saveComment(file, commentDto, principal.getName(), postId);
+        return "redirect:/";
     }
 }

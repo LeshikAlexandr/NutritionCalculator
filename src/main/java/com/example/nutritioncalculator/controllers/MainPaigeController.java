@@ -24,7 +24,7 @@ public class MainPaigeController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("/profile")
+    @GetMapping
     public String profile(Model model, Principal principal) {
         if (principal != null) {
             model.addAttribute("customer", customerService.getCustomer(principal.getName()));
@@ -34,14 +34,14 @@ public class MainPaigeController {
         return "profile";
     }
 
-    @PostMapping("/newComment/{id}")
-    public String createComment(@ModelAttribute("comment") CommentDto commentDto,
-                                @RequestParam(value = "file", required = false) MultipartFile file,
-                                @PathVariable("id") int postId,
-                                Principal principal) {
-
-        commentService.saveComment(file, commentDto, principal.getName(), postId);
-        return "redirect:/profile";
-    }
+//    @PostMapping("/newComment/{id}")
+//    public String createComment(@ModelAttribute("comment") CommentDto commentDto,
+//                                @RequestParam(value = "file", required = false) MultipartFile file,
+//                                @PathVariable("id") int postId,
+//                                Principal principal) {
+//
+//        commentService.saveComment(file, commentDto, principal.getName(), postId);
+//        return "redirect:/profile";
+//    }
 
 }

@@ -17,7 +17,7 @@
         </tr>
 </table>
         <br>
-        <form action="newComment/${post.id}" enctype="multipart/form-data" modelAttribute="comment" method="post">
+        <form action="posts/newComment/${post.id}" enctype="multipart/form-data" modelAttribute="comment" method="post">
             Комментарий <input name="text"/>
             <br><br>
             Фото комментария <input type="file" name="file"/>
