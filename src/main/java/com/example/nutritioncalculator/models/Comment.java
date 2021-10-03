@@ -26,7 +26,7 @@ public class Comment {
     private LocalDateTime createdDate;
 
     @ManyToOne
-    @OnDelete(action = OnDeleteAction.CASCADE)
+//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "post_id")
     private Post post;
 

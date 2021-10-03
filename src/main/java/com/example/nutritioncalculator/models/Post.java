@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,6 +35,7 @@ public class Post {
     private Photo photo;
 
     @OneToMany(mappedBy = "post")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private List<Comment> comments;
 
 }
