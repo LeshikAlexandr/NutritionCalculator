@@ -16,7 +16,7 @@ public class CustomerRegistrationDto {
 
     private int id;
 
-    @Size(min = 6, max = 15, message = "Количество знаков должно быть в диапазоне от 6 до 15")
+    @Size(min = 5, max = 15, message = "Количество знаков должно быть в диапазоне от 5 до 15")
     @NotEmpty(message = "Поле должно быть заполнено")
     private String login;
 
