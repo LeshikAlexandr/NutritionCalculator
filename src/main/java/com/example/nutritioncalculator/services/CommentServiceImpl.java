@@ -47,7 +47,7 @@ public class CommentServiceImpl implements CommentService {
         Comment comment = Comment.builder()
                 .post(postRepository.getById(postId))
                 .text(commentDto.getText())
-                .photo(photoService.save(file, login))
+                .photo(photoService.save(file))
                 .createdDate(LocalDateTime.now())
                 .customer(customerRepository.findCustomerByLogin(login)
                         .orElseThrow(() -> new Exception("Не удалось найти фото, не существует пользователя с логином:" + login)))

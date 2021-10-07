@@ -27,12 +27,6 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <h1>MyFit</h1>
-    <p>Здесь должна быть мотивирующая фраза</p>
-</div>
-<div class="navbar">
-</div>
 <form:form class="pure-form pure-form-aligned" action="/customers/${customer.id}" modelAttribute="customer"
            method="post">
     <fieldset>
