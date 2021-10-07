@@ -5,7 +5,6 @@ import com.example.nutritioncalculator.models.Photo;
 import com.example.nutritioncalculator.services.PhotoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
