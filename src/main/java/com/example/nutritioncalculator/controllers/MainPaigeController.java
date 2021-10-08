@@ -23,7 +23,7 @@ public class MainPaigeController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping
+    @GetMapping("/profile")
     public String profile(Model model, Principal principal) {
         if (principal != null) {
             model.addAttribute("customer", customerService.getCustomer(principal.getName()));

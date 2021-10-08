@@ -42,7 +42,7 @@ public class PostController {
             return "posts/new";
         }
         postService.savePost(file, postDto, principal.getName());
-        return "redirect:/";
+        return "redirect:/profile";
     }
 
     @PostMapping("/newComment/{id}")
@@ -52,15 +52,15 @@ public class PostController {
                                 @PathVariable("id") int postId,
                                 Principal principal) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/";
+            return "redirect:/profile";
         }
         commentService.saveComment(file, commentDto, principal.getName(), postId);
-        return "redirect:/";
+        return "redirect:/profile";
     }
 
     @PostMapping("/delete/{id}")
     public String deletePost(@PathVariable("id") Integer id) {
         postService.deletePost(id);
-        return "redirect:/";
+        return "redirect:/profile";
     }
 }
