@@ -66,7 +66,7 @@ public class CustomerController {
         return "userprofile/update";
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/edit/{id}")
     public String update(@ModelAttribute("customer") @Valid CustomerDto customerDto,
                          BindingResult bindingResult,
                          @PathVariable("id") Integer id) {

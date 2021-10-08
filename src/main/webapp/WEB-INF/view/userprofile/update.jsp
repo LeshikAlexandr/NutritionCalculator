@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-<form:form class="pure-form pure-form-aligned" action="/customers/${customer.id}" modelAttribute="customer"
+<form:form class="pure-form pure-form-aligned" action="/customers/edit/${customer.id}" modelAttribute="customer"
            method="post">
     <fieldset>
         <div class="pure-control-group">
