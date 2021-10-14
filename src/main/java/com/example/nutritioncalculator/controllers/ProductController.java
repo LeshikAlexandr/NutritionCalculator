@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/products")
@@ -31,6 +32,18 @@ public class ProductController {
     public String newProduct(Model model) {
         model.addAttribute("product", new ProductDto());
         return "products/new";
+    }
+
+    @GetMapping("/search")
+    public String getProduct(@RequestParam(value = "name") String name,
+                             @RequestParam(value = "eating") String eating,
+                             Model model,
+                             Principal principal) {
+        model.addAttribute("product", productService.getProduct(name));
+        model.addAttribute("dailyMenu", dailyMenuService.getDailyMenuDto(principal.getName()));
+        model.addAttribute("eating", eating);
+        System.out.println(eating);
+        return "dailymenu/addProductToDailyMenu";
     }
 
     @PostMapping("/new")
