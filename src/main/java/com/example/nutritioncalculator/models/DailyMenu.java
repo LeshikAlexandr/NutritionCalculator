@@ -28,7 +28,7 @@ public class DailyMenu {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -40,5 +40,4 @@ public class DailyMenu {
     private int generalFats;
     @Column(name = "general_сarbohydrates")
     private int generalCarbohydrates;
-
 }

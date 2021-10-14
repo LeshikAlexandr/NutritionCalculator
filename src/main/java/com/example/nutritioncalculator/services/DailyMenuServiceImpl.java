@@ -86,21 +86,24 @@ public class DailyMenuServiceImpl implements DailyMenuService {
 
         DailyMenu dailyMenu = new DailyMenu();
         dailyMenu.setCreatedDate(LocalDate.now());
-        dailyMenu.setCustomer(customerRepository.getOne(customer.getId()));
+        dailyMenu.setCustomer(customer);
         dailyMenuRepository.save(dailyMenu);
     }
 
     @Override
     public void addProductToDailyMenu(int dailyMenuId, ProductDto productDto, Eating eating) {
 
+        // Создаём строку в таблице product_daily_menu и добавляем в неё ссылку daily_menu и product, также помещаем время приема пищи
         ProductDailyMenu productDailyMenuFromDb = productDailyMenuService.getProductDailyMenus(dailyMenuId, eating, productDto.getId());
 
+        // устанавливаем вес продукта
         int weight = productDailyMenuFromDb.getProductWeight() + productDto.getWeight();
         productDailyMenuFromDb.setProductWeight(weight);
         productDailyMenuService.save(productDailyMenuFromDb);
 
         DailyMenu dailyMenu = dailyMenuRepository.findById(dailyMenuId)
                 .orElseThrow(() -> new Exception("Не удалось найти Дневное меню id:"+ dailyMenuId));
+
 
         Map<Eating, List<Product>> productByEating = getProductsByEating(dailyMenu);
 
