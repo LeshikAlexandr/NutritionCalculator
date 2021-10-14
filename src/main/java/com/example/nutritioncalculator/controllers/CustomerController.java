@@ -1,27 +1,3 @@
-/*
-
-
-
-
-
-
-
-
-Не закончен профайл
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
 package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.CustomerDto;
@@ -46,14 +22,14 @@ public class CustomerController {
     @Autowired
     private PhotoService photoService;
 
-//    @GetMapping("/profile")
-//    public String userProfile(Principal principal, Model model) {
-//        String login = principal.getName();
-//        CustomerDto customer = customerService.getCustomer(login);
-//        model.addAttribute("user", customer);
-//        model.addAttribute("photo", photoService.getPhoto(customer.getId()));
-//        return "userprofile/userProfile";
-//    }
+    @GetMapping("/profile")
+    public String userProfile(Principal principal, Model model) {
+        String login = principal.getName();
+        CustomerDto customer = customerService.getCustomer(login);
+        model.addAttribute("user", customer);
+        model.addAttribute("photo", photoService.getPhoto(customer.getId()));
+        return "userprofile/userProfile";
+    }
 
     @GetMapping("/login")
     public String loginForm(Model model) {
@@ -74,7 +50,6 @@ public class CustomerController {
             return "userprofile/update";
         }
         customerService.updateCustomer(id, customerDto);
-//        return "redirect:/customers/profile";
         return "redirect:/";
     }
 }
