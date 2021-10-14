@@ -10,6 +10,8 @@ public interface ProductService {
 
     ProductDto getProduct(int id);
 
+    ProductDto getProduct(String name);
+
     List<ProductDto> getProducts(String name);
 
     void saveProduct(ProductDto productDto);

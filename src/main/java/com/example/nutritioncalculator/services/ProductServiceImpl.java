@@ -44,6 +44,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDto getProduct(String name) {
+        return ProductConverter.convertProductEntityToDto(productRepository.findByName(name));
+    }
+
+    @Override
     public void saveProduct(ProductDto productDto) {
 
         if (productRepository.findByName(productDto.getName()) == null) {
@@ -51,6 +56,8 @@ public class ProductServiceImpl implements ProductService {
         } else {
             throw new Exception("Такой продукт уже существует");
         }
+
+//        productRepository.save(convertProductDtoToEntity(productDto));
     }
 
     @Override
