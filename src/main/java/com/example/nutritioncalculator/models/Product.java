@@ -23,9 +23,6 @@ public class Product {
     private int fat;
     private int protein;
     private int carbohydrates;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "product_daily_menu",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "daily_menu_id"))
+    @ManyToMany(mappedBy = "products")
     private List<DailyMenu> dailyMenus;
 }

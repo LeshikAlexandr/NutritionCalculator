@@ -2,6 +2,7 @@ package com.example.nutritioncalculator.repositories;
 
 
 import com.example.nutritioncalculator.models.Eating;
+import com.example.nutritioncalculator.models.Product;
 import com.example.nutritioncalculator.models.ProductDailyMenu;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,7 @@ public interface ProductDailyMenuRepository extends JpaRepository<ProductDailyMe
     List<ProductDailyMenu> findAllProductDailyMenuByDailyMenuId(int daily);
 
     Optional<ProductDailyMenu> findByDailyMenuIdAndEatingAndProductId(int daily, Eating eating, int productId);
+
+    void removeAllByProduct(Product product);
 
 }

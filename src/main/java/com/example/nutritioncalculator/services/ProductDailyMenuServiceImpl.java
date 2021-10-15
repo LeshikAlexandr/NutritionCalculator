@@ -1,6 +1,7 @@
 package com.example.nutritioncalculator.services;
 
 import com.example.nutritioncalculator.models.Eating;
+import com.example.nutritioncalculator.models.Product;
 import com.example.nutritioncalculator.models.ProductDailyMenu;
 import com.example.nutritioncalculator.repositories.ProductDailyMenuRepository;
 import com.example.nutritioncalculator.repositories.ProductRepository;
@@ -17,6 +18,7 @@ public class ProductDailyMenuServiceImpl implements ProductDailyMenuService {
 
     @Autowired
     private ProductRepository productRepository;
+
 
     @Override
     public List<ProductDailyMenu> getProductDailyMenus(int dailyId) {
@@ -36,5 +38,10 @@ public class ProductDailyMenuServiceImpl implements ProductDailyMenuService {
                         .eating(eating)
                         .product(productRepository.findById(productId).orElse(null))
                         .build());
+    }
+
+    @Override
+    public void removeAllByProduct(Product product) {
+        productDailyMenuRepository.removeAllByProduct(product);
     }
 }

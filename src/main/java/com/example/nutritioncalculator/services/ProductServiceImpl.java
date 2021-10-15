@@ -6,6 +6,7 @@ import com.example.nutritioncalculator.repositories.ProductRepository;
 import com.example.nutritioncalculator.utils.ProductConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -19,6 +20,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductDailyMenuService productDailyMenuService;
 
     @Override
     public List<ProductDto> getAllProduct() {
@@ -61,7 +65,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Transactional
     public void deleteProduct(int id) {
+        productDailyMenuService.removeAllByProduct(productRepository.findById(id).orElseThrow(() -> new Exception("Не удалось найти продукт")));
         productRepository.deleteById(id);
     }
 
