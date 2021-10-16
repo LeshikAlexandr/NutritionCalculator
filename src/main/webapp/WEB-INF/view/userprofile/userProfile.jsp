@@ -177,7 +177,7 @@
                             <div class="col-xs-6">
                                 <label>
                                     <h4 text="bov">bov</h4>
-                                    <h4 if="${user.sex != null}"><a text="user.basicMetabolism">user.basicMetabolism</a>
+                                    <h4 if="${user.sex != null}"><a text="user.basicMetabolism">${user.basicMetabolism}</a>
                                         <c:if test="${user.sex != null}">
                                             ${user.basicMetabolism}
                                         </c:if>
