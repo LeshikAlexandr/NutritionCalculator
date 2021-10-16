@@ -194,7 +194,7 @@
     <!--        <button type="submit" class="btn btn-outline-light">Назад</button>-->
     <!--    </form>-->
     <div class="center">
-        <form action="/profile}" method="get">
+        <form action="/profile" method="get">
             <button type="submit" class="btn btn-outline-light">Назад</button>
         </form>
     </div>
