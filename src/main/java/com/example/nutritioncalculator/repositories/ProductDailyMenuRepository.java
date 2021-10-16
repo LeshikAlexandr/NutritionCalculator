@@ -19,4 +19,5 @@ public interface ProductDailyMenuRepository extends JpaRepository<ProductDailyMe
 
     void removeAllByProduct(Product product);
 
+    void removeAllByProductAndEatingAndDailyMenuId(Product product, Eating eating, int dailyMenuId);
 }

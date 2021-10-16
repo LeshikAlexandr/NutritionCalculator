@@ -1,5 +1,6 @@
 package com.example.nutritioncalculator.services;
 
+import com.example.nutritioncalculator.exceptions.Exception;
 import com.example.nutritioncalculator.models.Eating;
 import com.example.nutritioncalculator.models.Product;
 import com.example.nutritioncalculator.models.ProductDailyMenu;
@@ -7,6 +8,7 @@ import com.example.nutritioncalculator.repositories.ProductDailyMenuRepository;
 import com.example.nutritioncalculator.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -43,5 +45,12 @@ public class ProductDailyMenuServiceImpl implements ProductDailyMenuService {
     @Override
     public void removeAllByProduct(Product product) {
         productDailyMenuRepository.removeAllByProduct(product);
+    }
+
+    @Override
+    @Transactional
+    public void removeAllByProductAndEatingAndDailyMenuId(int productId, Eating eating, int dailyMenuId) {
+        Product product = productRepository.findById(productId).orElseThrow(() -> new Exception("Не удалось найти продукт"));
+        productDailyMenuRepository.removeAllByProductAndEatingAndDailyMenuId(product, eating, dailyMenuId);
     }
 }

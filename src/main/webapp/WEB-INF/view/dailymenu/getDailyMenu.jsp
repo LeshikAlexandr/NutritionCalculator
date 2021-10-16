@@ -154,7 +154,7 @@
 </div>
 <div class="nnavbar">
     <a href="/profile">Профиль</a>
-    <a href="/customers/profile">Профиль пользователя (не готово)</a>
+    <a href="/customers/profile">Профиль пользователя</a>
     <a href="/daily-menus">Дневное меню</a>
     <a href="/food-diaries">Журнал питания</a>
     <a href="/products">Продукты</a>
@@ -195,6 +195,16 @@
             <td><span></span>${product.factualProtein}</td>
             <td><span></span>${product.factualFat}</td>
             <td><span></span>${product.factualCarbohydrates}</td>
+            <td><span></span>
+                <div class="center">
+                    <div class="center">
+                        <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
+                            <button name="eating" value="BREAKFAST" class="btn btn-outline-light">Удалить продукт</button>
+                        </form>
+                    </div>
+                </div>
+            </td>
+
         </c:forEach>
     </tr>
     </tbody>
@@ -221,6 +231,15 @@
             <td><span></span>${product.factualProtein}</td>
             <td><span></span>${product.factualFat}</td>
             <td><span></span>${product.factualCarbohydrates}</td>
+            <td><span></span>
+                <div class="center">
+                    <div class="center">
+                        <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
+                            <button name="eating" value="DINNER" class="btn btn-outline-light">Удалить продукт</button>
+                        </form>
+                    </div>
+                </div>
+            </td>
         </c:forEach>
     </tr>
     <tbody class="labels">
@@ -236,14 +255,21 @@
     </tr>
     </tbody>
     <tr>
-        <c:forEach var="product" items="${dailyMenu.dinner}">
+        <c:forEach var="product" items="${dailyMenu.supper}">
             <br>
-            <td><span></span>${product.name}</td>
+            <<td><span></span>${product.name}</td>
             <td><span></span>${product.nominalCalories}</td>
             <td><span></span>${product.factualCalories}</td>
             <td><span></span>${product.factualProtein}</td>
             <td><span></span>${product.factualFat}</td>
             <td><span></span>${product.factualCarbohydrates}</td>
+            <td><span></span>
+                <div class="center">
+                    <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
+                        <button name="eating" value="SUPPER" class="btn btn-outline-light">Удалить продукт</button>
+                    </form>
+                </div>
+            </td>
         </c:forEach>
     </tr>
     </tbody>
