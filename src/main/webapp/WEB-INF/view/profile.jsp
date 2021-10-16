@@ -2,40 +2,6 @@
 <%@ page contentType="text/html;charset=WINDOWS-1251" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--<!DOCTYPE html>
-<html>
-<body>
-<table>
-    <c:forEach var="post" items="${posts}">
-    <tr>
-        <td>${post.text}</td>
-        <td>${post.createdDate}</td>
-
-        <c:forEach var="comment" items="${post.comments}">
-            ${comment.customer.login} : ${comment.text}
-            <br>
-        </c:forEach>
-    </tr>
-</table>
-<br>
-<form action="posts/newComment/${post.id}" enctype="multipart/form-data" modelAttribute="comment" method="post">
-    Комментарий <input name="text"/>
-    <form:errors path="text"/>
-    <br><br>
-    Фото комментария <input type="file" name="file"/>
-    <br><br>
-    <input type="submit" value="Комментировать">
-</form>
-<form:form action="/posts/delete/${post.id}" method="post">
-    <button type="submit" class="btn btn-outline-light">Удалить пост</button>
-</form:form>
-<br>
-</c:forEach>
-
-<br>
-<button onclick="window.location.href='/posts/new'">Click me</button>
-</body>
-</html>--%>
 
 <!DOCTYPE html>
 <html>
@@ -213,7 +179,7 @@
     <a href="/products">Продукты</a>
     <%--    <p if="${customer== null}"><a th:href="@{/registration}" class="right" th:text="#{registration}"></a></p>--%>
     <%--    <p if="${customer!= null}"  ><a th:href="@{/logout}" class="right" th:text="#{logout}"></a></p>--%>
-    <a href="/login}" class="right">Войти</a>
+    <a href="/login" class="right">Войти</a>
 </div>
 
 <div class="row">
@@ -259,6 +225,15 @@
             </div>
             </c:forEach>
         </div>
+    </div>
+    <div class="leftcolumn">
+        <c:set var="n" value="${customer.login}"/>
+        <c:forEach var="someCustomer" items="${customers}">
+            <c:set var="t" value="${someCustomer.login}"/>
+            <c:if test="${!(t eq n)}">
+                <h3>${someCustomer.login}</h3>
+            </c:if>
+        </c:forEach>
     </div>
 </div>
 </body>

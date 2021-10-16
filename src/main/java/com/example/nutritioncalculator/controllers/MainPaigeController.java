@@ -31,6 +31,7 @@ public class MainPaigeController {
         model.addAttribute("posts", postService.getAllPosts());
         model.addAttribute("comments", commentService.getAllComments());
         model.addAttribute("comment", new CommentDto());
+        model.addAttribute("customers", customerService.getAllCustomer());
         return "profile";
     }
 }
