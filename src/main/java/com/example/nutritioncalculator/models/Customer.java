@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -38,6 +39,19 @@ public class Customer implements UserDetails {
             joinColumns = @JoinColumn(name = "customer_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "customer_customer",
+            joinColumns = @JoinColumn(name = "parent_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private Set<Customer> followers;
+
+    public void addFollower(Customer customer) {
+        if (followers == null) {
+            followers = new HashSet<>();
+        }
+        followers.add(customer);
+    }
 
     @OneToMany(mappedBy = "customer")
     private Set<DailyMenu> dailyMenus;
