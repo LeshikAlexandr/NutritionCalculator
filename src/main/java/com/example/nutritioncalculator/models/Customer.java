@@ -1,9 +1,6 @@
 package com.example.nutritioncalculator.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -44,6 +41,7 @@ public class Customer implements UserDetails {
     @JoinTable(name = "customer_customer",
             joinColumns = @JoinColumn(name = "parent_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @EqualsAndHashCode.Exclude
     private Set<Customer> followers;
 
     public void addFollower(Customer customer) {
@@ -54,15 +52,19 @@ public class Customer implements UserDetails {
     }
 
     @OneToMany(mappedBy = "customer")
+    @EqualsAndHashCode.Exclude
     private Set<DailyMenu> dailyMenus;
 
     @OneToMany(mappedBy = "customer")
+    @EqualsAndHashCode.Exclude
     private Set<Post> posts;
 
     @OneToMany(mappedBy = "customer")
+    @EqualsAndHashCode.Exclude
     private Set<Comment> comment;
 
     @OneToMany(mappedBy = "customer")
+    @EqualsAndHashCode.Exclude
     private Set<Photo> photos;
 
     @Override
