@@ -3,9 +3,11 @@ package com.example.nutritioncalculator.services;
 
 import com.example.nutritioncalculator.controllers.dto.CustomerDto;
 import com.example.nutritioncalculator.controllers.dto.CustomerRegistrationDto;
+import com.example.nutritioncalculator.models.Customer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
+import java.util.Set;
 
 public interface CustomerService extends UserDetailsService {
 
@@ -18,5 +20,9 @@ public interface CustomerService extends UserDetailsService {
     CustomerDto getCustomer(String login);
 
     CustomerDto getCustomer(int id);
+
+    void addFollower(String login, Integer followerId);
+
+//    Set<Customer> getAllFollowers(String login);
 
 }

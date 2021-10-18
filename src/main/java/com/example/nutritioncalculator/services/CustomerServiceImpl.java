@@ -20,6 +20,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static com.example.nutritioncalculator.utils.CoefficientConstant.*;
@@ -61,6 +63,20 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(() -> new Exception("Не удалось найти пользователя")));
         return setCaloriesForCustomerDto(customerDto);
     }
+
+    @Override
+    public void addFollower(String login, Integer followerId) {
+        Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
+        Customer follower = customerRepository.getById(followerId);
+        customer.addFollower(follower);
+        customerRepository.save(customer);
+    }
+//
+//    @Override
+//    public Set<Customer> getAllFollowers(String login) {
+//        Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
+//        return customer.getFollowers();
+//    }
 
     @Override
     public boolean saveCustomer(CustomerRegistrationDto customerRegistrationDto) {
