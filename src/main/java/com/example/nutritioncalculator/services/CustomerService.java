@@ -23,6 +23,6 @@ public interface CustomerService extends UserDetailsService {
 
     void addFollower(String login, Integer followerId);
 
-//    Set<Customer> getAllFollowers(String login);
+    Set<Customer> getAllFollowers(String login);
 
 }

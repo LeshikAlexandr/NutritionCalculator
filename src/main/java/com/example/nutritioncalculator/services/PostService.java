@@ -14,4 +14,6 @@ public interface PostService {
 
     void deletePost(int id);
 
+    List<Post> getAllFollowersPosts(String login);
+
 }

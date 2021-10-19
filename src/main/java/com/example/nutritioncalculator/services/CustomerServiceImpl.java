@@ -71,12 +71,12 @@ public class CustomerServiceImpl implements CustomerService {
         customer.addFollower(follower);
         customerRepository.save(customer);
     }
-//
-//    @Override
-//    public Set<Customer> getAllFollowers(String login) {
-//        Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
-//        return customer.getFollowers();
-//    }
+
+    @Override
+    public Set<Customer> getAllFollowers(String login) {
+        Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
+        return customer.getFollowers();
+    }
 
     @Override
     public boolean saveCustomer(CustomerRegistrationDto customerRegistrationDto) {

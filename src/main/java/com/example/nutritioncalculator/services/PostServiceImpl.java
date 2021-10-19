@@ -1,7 +1,9 @@
 package com.example.nutritioncalculator.services;
 
+import com.example.nutritioncalculator.controllers.dto.CustomerDto;
 import com.example.nutritioncalculator.controllers.dto.PostDto;
 import com.example.nutritioncalculator.exceptions.Exception;
+import com.example.nutritioncalculator.models.Customer;
 import com.example.nutritioncalculator.models.Post;
 import com.example.nutritioncalculator.repositories.CustomerRepository;
 import com.example.nutritioncalculator.repositories.PostRepository;
@@ -16,8 +18,10 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +37,9 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private PhotoService photoService;
+
+    @Autowired
+    private CustomerService customerService;
 
     private final Path PhotoDirectoryPath = Paths.get("src/main/resources/static");
 
@@ -60,5 +67,15 @@ public class PostServiceImpl implements PostService {
     @Override
     public void deletePost(int id) {
         postRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Post> getAllFollowersPosts(String login) {
+        Set<Customer> allFollowers = customerService.getAllFollowers(login);
+        List<Post> posts = new ArrayList<>();
+        for (Customer customer : allFollowers) {
+            posts.addAll(customer.getPosts());
+        }
+        return posts;
     }
 }

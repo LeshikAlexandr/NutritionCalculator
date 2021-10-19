@@ -147,7 +147,7 @@
 </head>
 <body>
 <section>
-    <h1>Таблица продуктов</h1>
+    <h1>Таблица пользователей</h1>
     <div class="tbl-header">
         <table cellpadding="0" cellspacing="0" border="0">
             <thead>

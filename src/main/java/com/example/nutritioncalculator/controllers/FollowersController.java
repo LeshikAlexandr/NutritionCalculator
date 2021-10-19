@@ -44,9 +44,9 @@ public class FollowersController {
         return "redirect:/followers";
     }
 
-//    @GetMapping("/posts/{login}")
-//    public String getFollowersPosts(@PathVariable("login") String login, Principal principal, Model model) {
-//        model.addAttribute("allFollowersPosts", postService.getAllFollowersPosts(login));
-//        return "followers/posts";
-//    }
+    @GetMapping("/posts/{login}")
+    public String getFollowersPosts(@PathVariable("login") String login, Principal principal, Model model) {
+        model.addAttribute("allFollowersPosts", postService.getAllFollowersPosts(login));
+        return "followers/posts";
+    }
 }
