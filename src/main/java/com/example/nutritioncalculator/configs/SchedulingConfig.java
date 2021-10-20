@@ -1,6 +1,6 @@
 package com.example.nutritioncalculator.configs;
 
-import com.example.nutritioncalculator.services.DailyMenuService;
+import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;

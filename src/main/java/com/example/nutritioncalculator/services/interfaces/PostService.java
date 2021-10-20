@@ -1,4 +1,4 @@
-package com.example.nutritioncalculator.services;
+package com.example.nutritioncalculator.services.interfaces;
 
 import com.example.nutritioncalculator.controllers.dto.PostDto;
 import com.example.nutritioncalculator.models.Post;

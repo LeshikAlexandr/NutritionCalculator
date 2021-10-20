@@ -2,8 +2,8 @@ package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.ProductDto;
 import com.example.nutritioncalculator.models.Eating;
-import com.example.nutritioncalculator.services.DailyMenuService;
-import com.example.nutritioncalculator.services.ProductDailyMenuService;
+import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
+import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -3,6 +3,8 @@ package com.example.nutritioncalculator.services;
 import com.example.nutritioncalculator.controllers.dto.ProductDto;
 import com.example.nutritioncalculator.exceptions.Exception;
 import com.example.nutritioncalculator.repositories.ProductRepository;
+import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
+import com.example.nutritioncalculator.services.interfaces.ProductService;
 import com.example.nutritioncalculator.utils.ProductConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

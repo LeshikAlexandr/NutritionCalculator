@@ -1,11 +1,8 @@
 package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.CustomerDto;
-import com.example.nutritioncalculator.models.Customer;
-import com.example.nutritioncalculator.models.Post;
-import com.example.nutritioncalculator.services.CustomerService;
-import com.example.nutritioncalculator.services.PostService;
-import org.dom4j.rule.Mode;
+import com.example.nutritioncalculator.services.interfaces.CustomerService;
+import com.example.nutritioncalculator.services.interfaces.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
-import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/followers")

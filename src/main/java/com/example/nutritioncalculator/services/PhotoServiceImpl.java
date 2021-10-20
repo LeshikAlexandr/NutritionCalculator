@@ -4,6 +4,7 @@ import com.example.nutritioncalculator.exceptions.Exception;
 import com.example.nutritioncalculator.models.Photo;
 import com.example.nutritioncalculator.repositories.CustomerRepository;
 import com.example.nutritioncalculator.repositories.PhotoRepository;
+import com.example.nutritioncalculator.services.interfaces.PhotoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -68,7 +69,7 @@ public class PhotoServiceImpl implements PhotoService {
             Files.copy(file.getInputStream(), this.photoDirectoryPath.resolve(file.getOriginalFilename()));
             Photo photo = new Photo();
             photo.setName(file.getOriginalFilename());
-            photo.setUrl("/images" + file.getOriginalFilename());
+            photo.setUrl("/images/" + file.getOriginalFilename());
 //            photo.setCustomer(customerRepository.findCustomerByLogin(login)
 //                    .orElseThrow(() -> new Exception("Не удалось найти фото, не существует пользователя с логином:" + login)));
             photoRepository.save(photo);

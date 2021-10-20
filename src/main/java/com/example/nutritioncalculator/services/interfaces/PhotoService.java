@@ -1,4 +1,4 @@
-package com.example.nutritioncalculator.services;
+package com.example.nutritioncalculator.services.interfaces;
 
 import com.example.nutritioncalculator.models.Photo;
 import org.springframework.web.multipart.MultipartFile;

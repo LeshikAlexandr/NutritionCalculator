@@ -2,6 +2,7 @@ package com.example.nutritioncalculator.controllers.dto;
 
 
 import com.example.nutritioncalculator.models.Activity;
+import com.example.nutritioncalculator.models.Photo;
 import com.example.nutritioncalculator.models.Role;
 import com.example.nutritioncalculator.models.Sex;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,7 @@ public class CustomerDto {
     private String login;
     private String password;
     private Set<Role> roles;
+    private Photo photo;
     private double basicMetabolism;
     private double weightLossCalories;
     private double weightGainCalories;

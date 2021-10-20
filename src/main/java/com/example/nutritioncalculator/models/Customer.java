@@ -63,9 +63,9 @@ public class Customer implements UserDetails {
     @EqualsAndHashCode.Exclude
     private Set<Comment> comment;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToOne(mappedBy = "customer")
     @EqualsAndHashCode.Exclude
-    private Set<Photo> photos;
+    private Photo photo;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

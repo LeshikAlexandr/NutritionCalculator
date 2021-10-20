@@ -6,6 +6,7 @@ import com.example.nutritioncalculator.models.Product;
 import com.example.nutritioncalculator.models.ProductDailyMenu;
 import com.example.nutritioncalculator.repositories.ProductDailyMenuRepository;
 import com.example.nutritioncalculator.repositories.ProductRepository;
+import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.example.nutritioncalculator.services;
+package com.example.nutritioncalculator.services.interfaces;
 
 import com.example.nutritioncalculator.controllers.dto.DailyMenuDto;
 import com.example.nutritioncalculator.controllers.dto.ProductDto;

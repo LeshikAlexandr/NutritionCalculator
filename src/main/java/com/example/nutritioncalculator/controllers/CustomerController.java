@@ -1,8 +1,8 @@
 package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.CustomerDto;
-import com.example.nutritioncalculator.services.CustomerService;
-import com.example.nutritioncalculator.services.PhotoService;
+import com.example.nutritioncalculator.services.interfaces.CustomerService;
+import com.example.nutritioncalculator.services.interfaces.PhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.Model;

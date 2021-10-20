@@ -9,8 +9,8 @@ import com.example.nutritioncalculator.models.Customer;
 import com.example.nutritioncalculator.models.Sex;
 import com.example.nutritioncalculator.repositories.CustomerRepository;
 import com.example.nutritioncalculator.repositories.RoleRepository;
+import com.example.nutritioncalculator.services.interfaces.CustomerService;
 import com.example.nutritioncalculator.utils.CustomerConverter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 

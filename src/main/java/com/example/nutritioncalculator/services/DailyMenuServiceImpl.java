@@ -6,6 +6,8 @@ import com.example.nutritioncalculator.exceptions.Exception;
 import com.example.nutritioncalculator.models.*;
 import com.example.nutritioncalculator.repositories.CustomerRepository;
 import com.example.nutritioncalculator.repositories.DailyMenuRepository;
+import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
+import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import com.example.nutritioncalculator.utils.DailyMenuConverter;
 import com.example.nutritioncalculator.utils.ProductConverter;
 import org.springframework.beans.factory.annotation.Autowired;

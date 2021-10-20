@@ -1,5 +1,6 @@
 package com.example.nutritioncalculator.services;
 
+import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 

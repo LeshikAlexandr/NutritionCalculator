@@ -24,7 +24,7 @@ public class Photo {
     @OneToOne(mappedBy = "photo")
     private Post post;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

@@ -1,6 +1,6 @@
 package com.example.nutritioncalculator.configs;
 
-import com.example.nutritioncalculator.services.CustomerService;
+import com.example.nutritioncalculator.services.interfaces.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

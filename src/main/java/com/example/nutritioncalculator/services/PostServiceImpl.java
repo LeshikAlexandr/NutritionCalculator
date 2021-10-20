@@ -1,12 +1,14 @@
 package com.example.nutritioncalculator.services;
 
-import com.example.nutritioncalculator.controllers.dto.CustomerDto;
 import com.example.nutritioncalculator.controllers.dto.PostDto;
 import com.example.nutritioncalculator.exceptions.Exception;
 import com.example.nutritioncalculator.models.Customer;
 import com.example.nutritioncalculator.models.Post;
 import com.example.nutritioncalculator.repositories.CustomerRepository;
 import com.example.nutritioncalculator.repositories.PostRepository;
+import com.example.nutritioncalculator.services.interfaces.CustomerService;
+import com.example.nutritioncalculator.services.interfaces.PhotoService;
+import com.example.nutritioncalculator.services.interfaces.PostService;
 import com.example.nutritioncalculator.utils.CustomerConverter;
 import com.example.nutritioncalculator.utils.PostConverter;
 import org.apache.logging.log4j.LogManager;

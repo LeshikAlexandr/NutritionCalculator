@@ -2,7 +2,7 @@ package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.CustomerDto;
 import com.example.nutritioncalculator.models.Photo;
-import com.example.nutritioncalculator.services.PhotoService;
+import com.example.nutritioncalculator.services.interfaces.PhotoService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
