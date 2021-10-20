@@ -204,6 +204,7 @@
             </c:if>
             <c:forEach var="comment" items="${post.comments}">
                 <div class="card">
+                        <img src="${comment.photo.url}" width="350" height="350"/>
                         ${comment.customer.login}: ${comment.text}
                     <br>
                 </div>
