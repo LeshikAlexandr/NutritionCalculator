@@ -38,6 +38,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private DailyMenuServiceImpl dailyMenuService;
+
 //    private final DailyMenuService dailyMenuService;
 //    private final DailyMenuRepository dailyMenuRepository;
 
@@ -90,8 +94,7 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setRoles(Collections.singleton(roleRepository.findByName("user")));
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         customerRepository.save(customer);
-//        dailyMenuService.saveDailyMenu(customer);
-        //customer.setDailyMenu(dailyMenuRepository.getOne());
+        dailyMenuService.saveDailyMenu(customer);
         return true;
     }
 
