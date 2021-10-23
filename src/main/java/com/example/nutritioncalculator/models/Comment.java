@@ -1,9 +1,6 @@
 package com.example.nutritioncalculator.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -28,14 +25,17 @@ public class Comment {
     @ManyToOne
 //    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "post_id")
+    @EqualsAndHashCode.Exclude
     private Post post;
 
     @OneToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "photo_id")
+    @EqualsAndHashCode.Exclude
     private Photo photo;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @EqualsAndHashCode.Exclude
     private Customer customer;
 
 }
