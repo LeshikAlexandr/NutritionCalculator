@@ -91,7 +91,7 @@ public class CustomerServiceImpl implements CustomerService {
             return false;
         }
 
-        customer.setRoles(Collections.singleton(roleRepository.findByName("user")));
+        customer.setRoles(Collections.singleton(roleRepository.findByName("ROLE_USER")));
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         customerRepository.save(customer);
         dailyMenuService.saveDailyMenu(customer);
