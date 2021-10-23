@@ -26,7 +26,6 @@ public class RegistrationController {
     @PostMapping
     public String addUser(@ModelAttribute("customer") @Valid CustomerRegistrationDto customerRegistrationDto,
                           BindingResult bindingResult, Model model) {
-        System.out.println(customerRegistrationDto.getLogin());
         if (bindingResult.hasErrors()) {
             return "security/registration";
         }
