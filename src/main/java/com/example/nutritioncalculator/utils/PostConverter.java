@@ -10,6 +10,7 @@ public class PostConverter {
     public static PostDto convertPostEntityToPostDto(Post post) {
 
         return PostDto.builder()
+                .title(post.getTitle())
                 .text(post.getText())
                 .customerDto(CustomerConverter.convertCustomerEntityToCustomerDto(post.getCustomer()))
                 .photo(post.getPhoto())
@@ -19,6 +20,7 @@ public class PostConverter {
 
     public static Post convertPostDtoToPostEntity(PostDto postDto) {
         return Post.builder()
+                .title(postDto.getTitle())
                 .text(postDto.getText())
                 .customer(CustomerConverter.convertCustomerDtoToCustomerEntity(postDto.getCustomerDto()))
                 .photo(postDto.getPhoto())

@@ -18,6 +18,8 @@ public class PostDto {
 
     private Photo photo;
     @Size(min = 1, message = "Количество символов должно быть не менее 1")
+    private String title;
+    @Size(min = 1, message = "Количество символов должно быть не менее 1")
     private String text;
     @DateTimeFormat(pattern = "MMMM dd, yyyy")
     private LocalDateTime createdDate;
