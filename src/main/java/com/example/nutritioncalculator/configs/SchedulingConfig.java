@@ -15,9 +15,6 @@ public class SchedulingConfig {
     @Autowired
     private DailyMenuService dailyMenuService;
 
-    /**
-     * Method save Daily Menu for every customer every day at 12 am
-     */
     @Scheduled(cron = "0 0 0 * * ?")
     public void createDailyMenuForAllCustomersTask() {
         dailyMenuService.saveDailyMenuForEveryCustomer();

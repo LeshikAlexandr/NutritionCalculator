@@ -55,12 +55,9 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <h1>MyFit</h1>
-    <p>Здесь должна быть мотивирующая фраза</p>
-</div>
-<div class="navbar">
-</div>
+
+<c:import url="../header.jsp"/>
+
 <div class="center">
     <form:form class="pure-form pure-form-aligned" action="/products/new"  modelAttribute="product" method="post">
         <fieldset>

@@ -20,16 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class PostServiceImpl implements PostService {
-
-    private static final Logger LOGGER = LogManager.getLogger(PostServiceImpl.class);
 
     @Autowired
     private PostRepository postRepository;
@@ -42,8 +37,6 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     private CustomerService customerService;
-
-    private final Path PhotoDirectoryPath = Paths.get("src/main/resources/static");
 
     @Override
     public void savePost(MultipartFile file, PostDto postDto, String login) {
@@ -79,5 +72,17 @@ public class PostServiceImpl implements PostService {
             posts.addAll(customer.getPosts());
         }
         return posts;
+    }
+
+    @Override
+    public List<Post> getAllCustomerPosts(String login) {
+        List<Post> posts = postRepository.findAllByCustomer_Login(login);
+        Collections.sort(posts);
+        return posts;
+    }
+
+    @Override
+    public Post getPost(int id) {
+        return postRepository.getById(id);
     }
 }

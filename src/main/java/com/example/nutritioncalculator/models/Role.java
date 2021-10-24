@@ -27,15 +27,6 @@ public class Role implements GrantedAuthority {
             inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private Set<Customer> customers;
 
-    public Role(int id) {
-        this.id = id;
-    }
-
-    public Role(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
     @Override
     public String getAuthority() {
         return getName();

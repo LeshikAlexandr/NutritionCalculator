@@ -63,24 +63,7 @@
 </head>
 <body>
 
-<div class="header">
-    <h1>MyFit</h1>
-    <p>Мотивирующая фраза</p>
-    <div class="icon_de">
-        <p align="left"><a th:href="@{/profile?lang=en}"><img src="/images/united_kingdom_glossy_square_icon_64.png"
-                                                              width="48" height="40"></a></p>
-    </div>
-
-    <div class="icon_de">
-        <p align="left"><a th:href="@{/profile?lang=ru}"><img src="/images/russia_glossy_square_icon_64.png" width="48"
-                                                              height="40"></a></p>
-    </div>
-</div>
-
-<div class="navbar">
-    <br>
-    <br>
-</div>
+<c:import url="../header.jsp"/>
 
 <div class="cont">
     <form action="/products/search" method="get">
@@ -111,17 +94,3 @@
 </div>
 </body>
 </html>
-
-<%--<div class ="cont" th:each="product: ${products}">
-    <form th:method="post" th:object="${product}"  th:action="@{/daily-menus/{id}/products (id=${dailyMenu.id})}" >
-        <input type="hidden" th:value="*{id}" name="id"> </input>
-        <input th:value="*{name}" name="name" readonly="readonly"> </input>
-        <input th:value="*{nominalCalories}" name="calories" readonly="readonly"> </input>
-        <input th:value="*{protein}" name="protein" readonly="readonly"> </input>
-        <input th:value="*{fat}" name="fat" readonly="readonly"> </input>
-        <input th:value="*{carbonhydrates}" name="carbonhydrates" readonly="readonly"> </input>
-        <input th:value="*{weight}" name="weight" required="required"> </input>
-        <input type="hidden" th:value="${eating}" name="eating" id="eating"> </input>
-        <button class="submit-button" type="submit">+</button>
-    </form>
-</div>--%>

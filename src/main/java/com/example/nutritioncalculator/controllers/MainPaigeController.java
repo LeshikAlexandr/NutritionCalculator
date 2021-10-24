@@ -28,10 +28,9 @@ public class MainPaigeController {
         if (principal != null) {
             model.addAttribute("customer", customerService.getCustomer(principal.getName()));
         }
-        model.addAttribute("posts", postService.getAllPosts());
-//        model.addAttribute("comments", commentService.getAllComments());
+        model.addAttribute("posts", postService.getAllCustomerPosts("admin"));
         model.addAttribute("comment", new CommentDto());
         model.addAttribute("customers", customerService.getAllCustomer());
-        return "profile";
+        return "posts/portalNews";
     }
 }

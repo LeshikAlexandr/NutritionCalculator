@@ -33,6 +33,6 @@ public class RegistrationController {
             model.addAttribute("customerError", "Пользователь с таким именем уже существует");
             return "security/registration";
         }
-        return "redirect:/profile";
+        return "redirect:/";
     }
 }

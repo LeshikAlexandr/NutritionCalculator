@@ -35,7 +35,7 @@ public class PhotoController {
         try {
             photoService.saveOrUpdate(file, principal.getName());
             model.addAttribute("message", "Файл загружен успешно: " + file.getOriginalFilename());
-            return "upload/uploadFile";
+            return "redirect:/customers/profile";
         } catch (Exception e) {
             LOGGER.error("Возникла ошибка при сохранении файла", e);
             model.addAttribute("message", "Не удалось загрузить файл: " + file.getOriginalFilename());

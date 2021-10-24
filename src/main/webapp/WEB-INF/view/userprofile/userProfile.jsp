@@ -59,6 +59,10 @@
     </style>
 </head>
 
+<body>
+
+<c:import url="../header.jsp"/>
+
 <div class="header">
     <h1>MyFit</h1>
     <p>Мотивирующая фраза</p>
@@ -76,7 +80,7 @@
     <a href="/daily-menus>Дневное меню"</a>
     <a href="/food-diaries">Журнал питания</a>
     <a href="/products">Продукты</a>
-<%--    <p if="${user!= null}"><a th:href="@{/logout}" class="right" th:text="#{logout}"></a></p>--%>
+    <%--    <p if="${user!= null}"><a th:href="@{/logout}" class="right" th:text="#{logout}"></a></p>--%>
 </div>
 <hr>
 <div class="container bootstrap snippet">
@@ -185,10 +189,10 @@
                                 </label>
                             </div>
 
-<%--                            <!--                            <div class="col-xs-6">-->
-                            <!--                                <label > <h4 th:text="#{bov}" ></h4> <h4><p th:if="${user.sex==null}">0</p></h4> </label>-->
-                            <!--                                <label > <h4 th:text="#{bov}" ></h4> <h4><a th:text="${user.basicMetabolism}"></a></h4> </label>-->
-                            <!--                            </div>-->--%>
+                            <%--                            <!--                            <div class="col-xs-6">-->
+                                                        <!--                                <label > <h4 th:text="#{bov}" ></h4> <h4><p th:if="${user.sex==null}">0</p></h4> </label>-->
+                                                        <!--                                <label > <h4 th:text="#{bov}" ></h4> <h4><a th:text="${user.basicMetabolism}"></a></h4> </label>-->
+                                                        <!--                            </div>-->--%>
 
                             <div class="col-xs-6">
                                 <label><h4 text="daily_calories_for_low_weight">daily_calories_for_low_weight</h4> <h4><a text="${user.weightLossCalories}">${user.weightLossCalories}</a></h4></label>
@@ -202,16 +206,17 @@
                                 <label><h4 text="daily_calories_for_weight">daily_calories_for_weight</h4> <h4><a text="user.weightGainCalories">${user.weightGainCalories}</a></h4></label>
                             </div>
 
+                            <c:forEach var="role" items="${user.roles}">
+                                ${role.name}
+                            </c:forEach>
                         </div>
                     </form>
-                    <hr>
-
-                </div>
-                <div class="tab-pane" id="messages">
-
                     <hr>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+</body>
+</html>

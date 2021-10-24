@@ -40,18 +40,6 @@
             color: white;
         }
 
-        /*.nnavbar {*/
-        /*    overflow: hidden;*/
-        /*    background-color: #333;*/
-        /*    position: sticky;*/
-        /*    position: -webkit-sticky;*/
-        /*    top: 0;*/
-        /*}*/
-
-        .tbl-header {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
         table {
             width: 750px;
             border-collapse: collapse;
@@ -59,7 +47,7 @@
         }
 
         th {
-            background: #0a866f;
+            background: #082f27;
             color: white;
             font-weight: bold;
         }
@@ -72,7 +60,7 @@
         }
 
         .labels tr td {
-            background-color: #1ABC9C;
+            background-color: #0d6958;
             font-weight: bold;
             color: #fff;
         }
@@ -84,14 +72,6 @@
 
         [data-toggle="toggle"] {
             display: none;
-        }
-
-        .nnavbar {
-            overflow: hidden;
-            background-color: #333;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
         }
 
         /* Style the navigation bar links */
@@ -139,27 +119,8 @@
     </script>
 </head>
 <body>
-<div class="header">
-    <h1>MyFit</h1>
-    <p>Мотивирующая фраза</p>
-    <div class="icon_de">
-        <p align="left"><a th:href="@{/daily-menus?lang=en}"><img src="/images/united_kingdom_glossy_square_icon_64.png"
-                                                                  width="48" height="40"></a></p>
-    </div>
 
-    <div class="icon_de">
-        <p align="left"><a th:href="@{/daily-menus?lang=ru}"><img src="/images/russia_glossy_square_icon_64.png"
-                                                                  width="48" height="40"></a></p>
-    </div>
-</div>
-<div class="nnavbar">
-    <a href="/profile">Профиль</a>
-    <a href="/customers/profile">Профиль пользователя</a>
-    <a href="/daily-menus">Дневное меню</a>
-    <a href="/food-diaries">Журнал питания</a>
-    <a href="/products">Продукты</a>
-    <a href="/logout">Выйти</a></p>
-</div>
+<c:import url="../header.jsp"/>
 
 <table>
     <thead>
@@ -290,7 +251,7 @@
 </table>
 
 <div>
-    <form action="/profile" method="get">
+    <form action="/" method="get">
         <input class="inputButton" type="submit" value="Назад"/>
     </form>
 </div>

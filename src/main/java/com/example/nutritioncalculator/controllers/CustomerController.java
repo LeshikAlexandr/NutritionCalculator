@@ -28,11 +28,11 @@ public class CustomerController {
         CustomerDto customer = customerService.getCustomer(login);
         model.addAttribute("user", customer);
         model.addAttribute("photo", photoService.getPhoto(customer.getId()));
-        return "userprofile/userProfile";
+        return "userprofile/myProfile";
     }
 
     @GetMapping("/login")
-    public String loginForm(Model model) {
+    public String loginForm() {
         return "security/login";
     }
 

@@ -32,15 +32,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public void saveComment(MultipartFile file, CommentDto commentDto, String login, int postId) {
-//        if (file.getSize() != 0) {
-//            commentDto.setPhoto(photoService.save(file));
-//        }
-//        commentDto.setPostDto(PostConverter.convertPostEntityToPostDto(postRepository.getById(postId))); // доработать, чтобы не было null
-//        commentDto.setCreatedDate(LocalDateTime.now());
-//        commentDto.setCustomerDto(CustomerConverter.convertCustomerEntityToCustomerDto(customerRepository.findCustomerByLogin(login)
-//                .orElseThrow(() -> new Exception("Не удалось найти пользователя"))));
-//        commentRepository.save(CommentConverter.convertCommentDtoToCommentEntity(commentDto));
-
 
         Comment comment = Comment.builder()
                 .post(postRepository.getById(postId))

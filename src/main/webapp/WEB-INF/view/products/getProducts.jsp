@@ -146,6 +146,9 @@
     </style>
 </head>
 <body>
+
+<c:import url="../header.jsp"/>
+
 <section>
     <h1>Таблица продуктов</h1>
     <div class="tbl-header">
@@ -198,7 +201,7 @@
     </div>
     <br>
     <div class="center">
-        <form action="profile" method="get">
+        <form action="/" method="get">
             <button type="submit" class="btn btn-outline-light">Назад</button>
         </form>
     </div>

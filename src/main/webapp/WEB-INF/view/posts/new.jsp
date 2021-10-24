@@ -10,6 +10,8 @@
 
 <form:form action="/posts/new" enctype="multipart/form-data" modelAttribute="post" method="post">
 
+    Заголовок <form:input path="title"/>
+    <form:errors path="title"/>
     Текст <form:input path="text"/>
     <form:errors path="text"/>
     <br><br>

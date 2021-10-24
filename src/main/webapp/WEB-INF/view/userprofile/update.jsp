@@ -27,6 +27,9 @@
     </style>
 </head>
 <body>
+
+<c:import url="../header.jsp"/>
+
 <form:form class="pure-form pure-form-aligned" action="/customers/edit/${customer.id}" modelAttribute="customer"
            method="post">
     <fieldset>

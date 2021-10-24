@@ -22,7 +22,7 @@ public class PhotoServiceImpl implements PhotoService {
     private final PhotoRepository photoRepository;
     private final CustomerRepository customerRepository;
 
-    private final Path photoDirectoryPath = Paths.get("src/main/resources/static/images");
+    private final Path photoDirectoryPath = Paths.get("src/main/webapp/WEB-INF/images");
 
     public PhotoServiceImpl(PhotoRepository photoRepository, CustomerRepository customerRepository) {
         this.photoRepository = photoRepository;

@@ -16,4 +16,8 @@ public interface PostService {
 
     List<Post> getAllFollowersPosts(String login);
 
+    List<Post> getAllCustomerPosts(String login);
+
+    Post getPost(int id);
+
 }

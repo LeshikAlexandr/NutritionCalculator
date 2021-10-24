@@ -1,12 +1,9 @@
 package com.example.nutritioncalculator.models;
 
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Data
 @Entity
@@ -23,7 +20,6 @@ public class Comment {
     private LocalDateTime createdDate;
 
     @ManyToOne
-//    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "post_id")
     @EqualsAndHashCode.Exclude
     private Post post;

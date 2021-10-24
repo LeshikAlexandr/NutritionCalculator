@@ -4,6 +4,7 @@ import com.example.nutritioncalculator.controllers.dto.CommentDto;
 import com.example.nutritioncalculator.controllers.dto.PostDto;
 import com.example.nutritioncalculator.models.Post;
 import com.example.nutritioncalculator.services.interfaces.CommentService;
+import com.example.nutritioncalculator.services.interfaces.CustomerService;
 import com.example.nutritioncalculator.services.interfaces.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class PostController {
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private CustomerService customerService;
+
     @GetMapping("/new")
     public String newPost(Model model) {
         List<Post> allPosts = postService.getAllPosts();
@@ -45,6 +49,14 @@ public class PostController {
         return "redirect:/profile";
     }
 
+    @GetMapping("/{id}")
+    public String showPost(@PathVariable("id") int id, Model model, Principal principal) {
+        model.addAttribute("customer", customerService.getCustomer(principal.getName()));
+        model.addAttribute("post", postService.getPost(id));
+        model.addAttribute("comment", new CommentDto());
+        return "posts/showPost";
+    }
+
     @PostMapping("/newComment/{id}")
     public String createComment(@ModelAttribute("comment") @Valid CommentDto commentDto,
                                 BindingResult bindingResult,
@@ -55,6 +67,12 @@ public class PostController {
             return "redirect:/profile";
         }
         commentService.saveComment(file, commentDto, principal.getName(), postId);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/comment/delete/{id}")
+    public String deleteComment(@PathVariable("id") int id) {
+        commentService.deleteComment(id);
         return "redirect:/profile";
     }
 

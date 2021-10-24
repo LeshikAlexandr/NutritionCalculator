@@ -9,8 +9,6 @@ import java.util.Optional;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    void deleteById(int id);
-
     Optional<Customer> findById(int id);
 
     Optional<Customer> findCustomerByLogin(String login);

@@ -42,9 +42,6 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private DailyMenuServiceImpl dailyMenuService;
 
-//    private final DailyMenuService dailyMenuService;
-//    private final DailyMenuRepository dailyMenuRepository;
-
     @Override
     public List<CustomerDto> getAllCustomer() {
         return customerRepository.findAll()

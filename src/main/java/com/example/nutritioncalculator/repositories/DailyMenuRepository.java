@@ -10,13 +10,9 @@ import java.util.Optional;
 
 @Repository
 public interface DailyMenuRepository extends JpaRepository<DailyMenu, Integer> {
-    void deleteById(int id);
 
     List<DailyMenu> findAllByCustomerId(int id);
 
     Optional<DailyMenu> findByCustomerLoginAndCreatedDate(String login, LocalDate createdDate);
 
-    Optional<DailyMenu> findByCustomerLogin(String login);
-
-    Optional<DailyMenu> findByCustomerIdAndCreatedDate(int id, LocalDate createdDate);
 }

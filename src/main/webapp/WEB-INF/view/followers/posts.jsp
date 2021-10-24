@@ -28,27 +28,11 @@
             margin: 0;
         }
 
-        /* Header/logo Title */
-        .header {
-            padding: 80px;
-            text-align: center;
-            background: #1abc9c;
-            color: white;
-        }
-
         /* Increase the font size of the heading */
         .header h1 {
             font-size: 40px;
         }
 
-        /* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
-        .nnavbar {
-            overflow: hidden;
-            background-color: #333;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-        }
 
         /* Style the navigation bar links */
         .nnavbar a {
@@ -86,16 +70,6 @@
             flex-wrap: wrap;
         }
 
-
-        /* Main column */
-        .main {
-            -ms-flex: 70%; /* IE10 */
-            flex: 70%;
-            background-color: white;
-            padding: 20px;
-        }
-
-
         body {
             font-family: Arial;
             padding: 20px;
@@ -107,20 +81,6 @@
         .leftcolumn {
             float: left;
             /*width: 7%;*/
-        }
-
-        /* Right column */
-        .rightcolumn {
-            float: left;
-            width: 25%;
-            padding-left: 20px;
-        }
-
-        /* Fake image */
-        .fakeimg {
-            background-color: #aaa;
-            width: 100%;
-            padding: 20px;
         }
 
         /* Add a card effect for articles */
@@ -137,14 +97,6 @@
             clear: both;
         }
 
-        /* Footer */
-        .footer {
-            padding: 20px;
-            text-align: center;
-            background: #ddd;
-            margin-top: 20px;
-        }
-
         /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
         @media screen and (max-width: 800px) {
             .leftcolumn, .rightcolumn {
@@ -157,19 +109,7 @@
 </head>
 <body>
 
-<div class="header">
-    <h1>MyFit</h1>
-    <p>Мотивирующая фраза</p>
-    <div class="icon_de">
-        <p align="left"><a th:href="@{/profile?lang=en}"><img src="/images/united_kingdom_glossy_square_icon_64.png"
-                                                              width="48" height="40"></a></p>
-    </div>
-
-    <div class="icon_de">
-        <p align="left"><a th:href="@{/profile?lang=ru}"><img src="/images/russia_glossy_square_icon_64.png" width="48"
-                                                              height="40"></a></p>
-    </div>
-</div>
+<c:import url="../header.jsp"/>
 
 <div class="row">
     <h1>Посты</h1>

@@ -62,8 +62,6 @@ public class ProductServiceImpl implements ProductService {
         } else {
             throw new Exception("Такой продукт уже существует");
         }
-
-//        productRepository.save(convertProductDtoToEntity(productDto));
     }
 
     @Override

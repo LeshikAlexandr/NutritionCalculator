@@ -152,14 +152,8 @@
     </style>
 </head>
 <body>
+<c:import url="../header.jsp"/>
 <h1>Журнал питания</h1>
-<%--<div class="icon_de">--%>
-<%--    <p align="left"><a th:href="@{/food-diaries?lang=en}"><img src="/images/united_kingdom_glossy_square_icon_64.png" width="48" height="40"></a></p>--%>
-<%--</div>--%>
-
-<%--<div class="icon_de">--%>
-<%--    <p align="left"><a th:href="@{/food-diaries?lang=ru}"><img src="/images/russia_glossy_square_icon_64.png" width="48" height="40"></a></p>--%>
-<%--</div>--%>
 <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
         <thead>
@@ -194,7 +188,7 @@
     <!--        <button type="submit" class="btn btn-outline-light">Назад</button>-->
     <!--    </form>-->
     <div class="center">
-        <form action="/profile" method="get">
+        <form action="/" method="get">
             <button type="submit" class="btn btn-outline-light">Назад</button>
         </form>
     </div>

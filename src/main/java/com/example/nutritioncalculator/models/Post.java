@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Post {
+public class Post implements Comparable<Post> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,4 +39,8 @@ public class Post {
     @EqualsAndHashCode.Exclude
     private List<Comment> comments;
 
+    @Override
+    public int compareTo(Post post) {
+        return this.createdDate.compareTo(post.createdDate) * -1;
+    }
 }
