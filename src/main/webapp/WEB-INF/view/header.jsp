@@ -66,6 +66,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/products"><spring:message code="products"/></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/subscriptions/all-customers"><spring:message code="list_of_customers"/></a>
+                </li>
             </ul>
             <sec:authorize access="!isAuthenticated()">
             <form class="d-flex" action="/login" method="get">
