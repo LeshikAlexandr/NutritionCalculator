@@ -167,20 +167,7 @@
                     <c:if test="${!(t eq n)}">
                         <tr>
                             <td>${someCustomer.login}</td>
-                                <%--<td>
-                                    <div class="center">
-                                        <form:form class="pure-form pure-form-aligned" action="/products/update/${product.id}" method="get">
-                                            <button type="submit" class="btn btn-outline-light">Редактировать продукт</button>
-                                        </form:form>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="center">
-                                        <form:form class="pure-form pure-form-aligned" action="/products/delete/${product.id}" method="delete">
-                                            <button type="submit" class="btn btn-outline-light">Удалить продукт</button>
-                                        </form:form>
-                                    </div>
-                                </td>--%>
+
                             <td><button type="submit" class="btn btn-outline-light">Подписаться</button></td>
                         </tr>
                     </c:if>
@@ -189,18 +176,6 @@
             </tbody>
         </table>
     </div>
-
-    <%--    <div class="center">
-            <form action="products/new" method="get">
-                <button type="submit" class="btn btn-outline-light">Добавить продукт</button>
-            </form>
-        </div>
-        <br>
-        <div class="center">
-            <form action="profile" method="get">
-                <button type="submit" class="btn btn-outline-light">Назад</button>
-            </form>
-        </div>--%>
 </section>
 </body>
 </html>
