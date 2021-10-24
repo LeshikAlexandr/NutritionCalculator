@@ -12,6 +12,7 @@ public class CustomerConverter {
     public static CustomerDto convertCustomerEntityToCustomerDto(Customer customer) {
 
         return CustomerDto.builder()
+                .photo(customer.getPhoto())
                 .id(customer.getId())
                 .name(customer.getName())
                 .login(customer.getLogin())
@@ -27,6 +28,7 @@ public class CustomerConverter {
     public static Customer convertCustomerDtoToCustomerEntity(CustomerDto customerDto) {
 
         return Customer.builder()
+                .photo(customerDto.getPhoto())
                 .id(customerDto.getId())
                 .name(customerDto.getName())
                 .age(customerDto.getAge())
