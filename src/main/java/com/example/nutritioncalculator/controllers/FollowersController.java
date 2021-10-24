@@ -35,13 +35,13 @@ public class FollowersController {
     @PostMapping("/add_follower/{id}")
     public String addFollower(@PathVariable("id") int id, Principal principal) {
         String login = principal.getName();
-        customerService.addFollower(login, id);
+        customerService.addSubscribe(login, id);
         return "redirect:/followers";
     }
 
     @GetMapping("/posts/{login}")
     public String getFollowersPosts(@PathVariable("login") String login, Principal principal, Model model) {
-        model.addAttribute("allFollowersPosts", postService.getAllFollowersPosts(login));
+        model.addAttribute("allFollowersPosts", postService.getAllSubscribersPosts(login));
         return "followers/posts";
     }
 }
