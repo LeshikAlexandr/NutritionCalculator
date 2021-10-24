@@ -59,23 +59,31 @@
                 <div class="nearby-user">
                     <c:set var="n" value="${customer.login}"/>
                     <c:forEach var="someCustomer" items="${customers}">
-                        <form action="/customers/add_follower/${someCustomer.id}" method="post">
-                            <c:set var="t" value="${someCustomer.login}"/>
-                            <c:if test="${!(t eq n)}">
+
+                        <c:set var="t" value="${someCustomer.login}"/>
+                        <c:if test="${!(t eq n)}">
                             <div class="row">
-                                <div class="col-md-2 col-sm-2">
-                                    <img src="${(someCustomer.photo != null && someCustomer.photo.url != null) ? someCustomer.photo.url : "/images/default/avatar7.png"}" alt="user"
+                                <div class="col-md-3 col-sm-2">
+                                    <img src="${(someCustomer.photo != null && someCustomer.photo.url != null) ? someCustomer.photo.url : "/images/default/avatar7.png"}"
+                                         alt="user"
                                          class="profile-photo-lg">
                                 </div>
-                                <div class="col-md-7 col-sm-7">
+                                <div class="col-md-3 col-sm-7">
                                     <h5><a href="#" class="profile-link">${someCustomer.login}</a></h5>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
-                                    <button class="btn btn-primary pull-right">Add Friend</button>
+                                    <form action="/subscriptions/add_follower/${someCustomer.id}" method="post">
+                                        <button class="btn btn-primary pull-right"><spring:message code="subscribe"/></button>
+                                    </form>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <form action="/subscriptions/delete_subscriber/${someCustomer.id}" method="post">
+                                        <button class="btn btn-primary pull-right"><spring:message code="unsubscribe"/></button>
+                                    </form>
                                 </div>
                             </div>
-                            </c:if>
-                        </form>
+                        </c:if>
+
                     </c:forEach>
                 </div>
             </div>
