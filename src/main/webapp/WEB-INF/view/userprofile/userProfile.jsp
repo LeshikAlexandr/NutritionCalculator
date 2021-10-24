@@ -62,26 +62,6 @@
 <body>
 
 <c:import url="../header.jsp"/>
-
-<div class="header">
-    <h1>MyFit</h1>
-    <p>Мотивирующая фраза</p>
-    <div class="icon_de">
-        <p><a href="@{/customers/profile?lang=en}"><img src="/images/united_kingdom_glossy_square_icon_64.png" width="48" height="40"> </a></p>
-    </div>
-
-    <div class="icon_de">
-        <p><a href="@{/customers/profile?lang=ru}"><img src="/images/russia_glossy_square_icon_64.png" width="48" height="40"></a></p>
-    </div>
-</div>
-<div class="nnavbar">
-    <a href="/profile">Главная страница</a>
-    <a href="customers/profile">Моя страница</a>
-    <a href="/daily-menus>Дневное меню"</a>
-    <a href="/food-diaries">Журнал питания</a>
-    <a href="/products">Продукты</a>
-    <%--    <p if="${user!= null}"><a th:href="@{/logout}" class="right" th:text="#{logout}"></a></p>--%>
-</div>
 <hr>
 <div class="container bootstrap snippet">
     <div class="row">
