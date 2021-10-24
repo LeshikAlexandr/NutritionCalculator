@@ -44,11 +44,15 @@ public class Customer implements UserDetails {
     @EqualsAndHashCode.Exclude
     private Set<Customer> followers;
 
-    public void addFollower(Customer customer) {
+    public void addSubscriber(Customer customer) {
         if (followers == null) {
             followers = new HashSet<>();
         }
         followers.add(customer);
+    }
+
+    public void deleteSubscriber(Customer customer) {
+        followers.remove(customer);
     }
 
     @OneToMany(mappedBy = "customer")

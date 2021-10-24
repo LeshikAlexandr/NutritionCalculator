@@ -21,8 +21,10 @@ public interface CustomerService extends UserDetailsService {
 
     CustomerDto getCustomer(int id);
 
-    void addFollower(String login, Integer followerId);
+    void addSubscribe(String login, Integer subscriberId);
 
-    Set<Customer> getAllFollowers(String login);
+    void deleteSubscribe(String login, Integer subscriberId);
+
+    Set<Customer> getAllSubscribers(String login);
 
 }

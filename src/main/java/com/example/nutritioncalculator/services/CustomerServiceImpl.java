@@ -65,15 +65,23 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void addFollower(String login, Integer followerId) {
+    public void addSubscribe(String login, Integer subscriberId) {
         Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
-        Customer follower = customerRepository.getById(followerId);
-        customer.addFollower(follower);
+        Customer subscriber = customerRepository.getById(subscriberId);
+        customer.addSubscriber(subscriber);
         customerRepository.save(customer);
     }
 
     @Override
-    public Set<Customer> getAllFollowers(String login) {
+    public void deleteSubscribe(String login, Integer subscriberId) {
+        Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
+        Customer subscriber = customerRepository.getById(subscriberId);
+        customer.deleteSubscriber(subscriber);
+        customerRepository.save(customer);
+    }
+
+    @Override
+    public Set<Customer> getAllSubscribers(String login) {
         Customer customer = customerRepository.findCustomerByLogin(login).orElseThrow(() -> new Exception("Не удалось найти пользователя"));
         return customer.getFollowers();
     }
