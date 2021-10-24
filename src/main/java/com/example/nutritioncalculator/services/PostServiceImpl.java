@@ -11,14 +11,10 @@ import com.example.nutritioncalculator.services.interfaces.PhotoService;
 import com.example.nutritioncalculator.services.interfaces.PostService;
 import com.example.nutritioncalculator.utils.CustomerConverter;
 import com.example.nutritioncalculator.utils.PostConverter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -65,8 +61,8 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getAllFollowersPosts(String login) {
-        Set<Customer> allFollowers = customerService.getAllFollowers(login);
+    public List<Post> getAllSubscribersPosts(String login) {
+        Set<Customer> allFollowers = customerService.getAllSubscribers(login);
         List<Post> posts = new ArrayList<>();
         for (Customer customer : allFollowers) {
             posts.addAll(customer.getPosts());
