@@ -24,4 +24,6 @@ public interface DailyMenuService {
     void addProductToDailyMenu(int dailyMenuId, ProductDto productDto, Eating eating);
 
     List<DailyMenuDto> getAllDailyMenus(int customerId);
+
+    void saveNew(int dailyMenuId);
 }

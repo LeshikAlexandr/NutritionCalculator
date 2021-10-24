@@ -163,4 +163,31 @@ public class DailyMenuServiceImpl implements DailyMenuService {
                 .map(ProductConverter::convertProductEntityToDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void saveNew(int dailyMenuId) {
+
+        DailyMenu dailyMenu = dailyMenuRepository.findById(dailyMenuId)
+                .orElseThrow(() -> new Exception("Не удалось найти Дневное меню id:"+ dailyMenuId));
+
+        Map<Eating, List<Product>> productByEating = getProductsByEating(dailyMenu);
+
+        List<ProductDto> breakfastsProducts = getEatingProducts(productByEating.get(Eating.BREAKFAST), dailyMenu.getId(), Eating.BREAKFAST);
+        List<ProductDto> dinnerProducts = getEatingProducts(productByEating.get(Eating.DINNER), dailyMenu.getId(), Eating.DINNER);
+        List<ProductDto> supperProducts = getEatingProducts(productByEating.get(Eating.SUPPER), dailyMenu.getId(), Eating.SUPPER);
+
+        dailyMenu.setGeneralCalories(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualCalories)
+                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualCalories)
+                + getGeneralNutrients(supperProducts, ProductDto::getFactualCalories));
+        dailyMenu.setGeneralProteins(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualProtein)
+                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualProtein)
+                + getGeneralNutrients(supperProducts, ProductDto::getFactualProtein));
+        dailyMenu.setGeneralFats(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualFat)
+                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualFat)
+                + getGeneralNutrients(supperProducts, ProductDto::getFactualFat));
+        dailyMenu.setGeneralCarbohydrates(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualCarbohydrates)
+                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualCarbohydrates)
+                + getGeneralNutrients(supperProducts, ProductDto::getFactualCarbohydrates));
+        dailyMenuRepository.save(dailyMenu);
+    }
 }

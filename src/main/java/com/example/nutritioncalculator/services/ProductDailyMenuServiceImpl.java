@@ -6,6 +6,7 @@ import com.example.nutritioncalculator.models.Product;
 import com.example.nutritioncalculator.models.ProductDailyMenu;
 import com.example.nutritioncalculator.repositories.ProductDailyMenuRepository;
 import com.example.nutritioncalculator.repositories.ProductRepository;
+import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
 import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,8 @@ public class ProductDailyMenuServiceImpl implements ProductDailyMenuService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private DailyMenuService dailyMenuService;
 
     @Override
     public List<ProductDailyMenu> getProductDailyMenus(int dailyId) {
@@ -53,5 +56,6 @@ public class ProductDailyMenuServiceImpl implements ProductDailyMenuService {
     public void removeAllByProductAndEatingAndDailyMenuId(int productId, Eating eating, int dailyMenuId) {
         Product product = productRepository.findById(productId).orElseThrow(() -> new Exception("Не удалось найти продукт"));
         productDailyMenuRepository.removeAllByProductAndEatingAndDailyMenuId(product, eating, dailyMenuId);
+        dailyMenuService.saveNew(dailyMenuId);
     }
 }
