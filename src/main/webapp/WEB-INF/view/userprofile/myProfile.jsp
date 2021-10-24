@@ -76,13 +76,13 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="${(photo != null && photo.url != null) ? photo.url : "/images/default/avatar7.png"}"
-                                 class="rounded-circle" width="150">
+                                  height="450" width="300">
                             <div class="mt-3">
                                 <h4>${user.login}</h4>
-                                <button class="btn btn-primary">Follow</button>
-                                <button class="btn btn-outline-primary">Posts</button>
+                                <button class="btn btn-primary m-1">Follow</button>
+                                <button class="btn btn-outline-primary m-1">Posts</button>
                                 <form method="get" action="/upload">
-                                    <button class="btn btn-outline-primary">Upload photo</button>
+                                    <button class="btn btn-outline-primary m-1">Upload photo</button>
                                 </form>
                             </div>
                         </div>
