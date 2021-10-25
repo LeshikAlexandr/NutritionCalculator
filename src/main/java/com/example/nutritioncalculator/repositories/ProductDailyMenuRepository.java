@@ -15,6 +15,8 @@ public interface ProductDailyMenuRepository extends JpaRepository<ProductDailyMe
 
     List<ProductDailyMenu> findAllProductDailyMenuByDailyMenuId(int daily);
 
+    List<ProductDailyMenu> findAllByDailyMenuIdAndEating(int daylyMenuId, Eating eating);
+
     Optional<ProductDailyMenu> findByDailyMenuIdAndEatingAndProductId(int daily, Eating eating, int productId);
 
     void removeAllByProduct(Product product);

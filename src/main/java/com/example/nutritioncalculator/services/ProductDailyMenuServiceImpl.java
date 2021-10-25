@@ -52,6 +52,11 @@ public class ProductDailyMenuServiceImpl implements ProductDailyMenuService {
     }
 
     @Override
+    public List<ProductDailyMenu> getByDailyMenuIdAndEating(int dailyMenuId, Eating eating) {
+        return productDailyMenuRepository.findAllByDailyMenuIdAndEating(dailyMenuId, eating);
+    }
+
+    @Override
     @Transactional
     public void removeAllByProductAndEatingAndDailyMenuId(int productId, Eating eating, int dailyMenuId) {
         Product product = productRepository.findById(productId).orElseThrow(() -> new Exception("Не удалось найти продукт"));

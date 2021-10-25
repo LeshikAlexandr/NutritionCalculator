@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Daily menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <style>
@@ -149,18 +149,24 @@
     <tbody class="hide">
     <tr>
         <c:forEach var="product" items="${dailyMenu.breakfast}">
-            <br>
             <td><span></span>${product.name}</td>
             <td><span></span>${product.nominalCalories}</td>
             <td><span></span>${product.factualCalories}</td>
             <td><span></span>${product.factualProtein}</td>
             <td><span></span>${product.factualFat}</td>
             <td><span></span>${product.factualCarbohydrates}</td>
+            <td><span></span><c:forEach var="element" items="${productDailyMenuBreakfast}">
+                <c:if test="${element.product.name eq product.name}">
+                    ${element.productWeight}
+                </c:if>
+            </c:forEach>
+            </td>
             <td><span></span>
                 <div class="center">
                     <div class="center">
                         <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
-                            <button name="eating" value="BREAKFAST" class="btn btn-outline-light">Удалить продукт</button>
+                            <button name="eating" value="BREAKFAST" class="btn btn-outline-light">Удалить продукт
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -192,6 +198,12 @@
             <td><span></span>${product.factualProtein}</td>
             <td><span></span>${product.factualFat}</td>
             <td><span></span>${product.factualCarbohydrates}</td>
+            <td><span></span><c:forEach var="element" items="${productDailyMenuDinner}">
+                <c:if test="${element.product.name eq product.name}">
+                    ${element.productWeight}
+                </c:if>
+            </c:forEach>
+            </td>
             <td><span></span>
                 <div class="center">
                     <div class="center">
@@ -224,6 +236,12 @@
             <td><span></span>${product.factualProtein}</td>
             <td><span></span>${product.factualFat}</td>
             <td><span></span>${product.factualCarbohydrates}</td>
+            <td><span></span><c:forEach var="element" items="${productDailyMenuSupper}">
+                <c:if test="${element.product.name eq product.name}">
+                    ${element.productWeight}
+                </c:if>
+            </c:forEach>
+            </td>
             <td><span></span>
                 <div class="center">
                     <form action="/delete/${dailyMenu.id}/${product.id}" method="post">

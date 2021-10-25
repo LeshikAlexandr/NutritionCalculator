@@ -12,6 +12,7 @@ import com.example.nutritioncalculator.utils.DailyMenuConverter;
 import com.example.nutritioncalculator.utils.ProductConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -165,6 +166,7 @@ public class DailyMenuServiceImpl implements DailyMenuService {
     }
 
     @Override
+    @Transactional
     public void saveNew(int dailyMenuId) {
 
         DailyMenu dailyMenu = dailyMenuRepository.findById(dailyMenuId)
@@ -189,5 +191,10 @@ public class DailyMenuServiceImpl implements DailyMenuService {
                 + getGeneralNutrients(dinnerProducts, ProductDto::getFactualCarbohydrates)
                 + getGeneralNutrients(supperProducts, ProductDto::getFactualCarbohydrates));
         dailyMenuRepository.save(dailyMenu);
+    }
+
+    @Override
+    public List<DailyMenu> getAll() {
+        return dailyMenuRepository.findAll();
     }
 }

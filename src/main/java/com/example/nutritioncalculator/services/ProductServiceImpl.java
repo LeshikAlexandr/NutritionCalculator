@@ -2,7 +2,9 @@ package com.example.nutritioncalculator.services;
 
 import com.example.nutritioncalculator.controllers.dto.ProductDto;
 import com.example.nutritioncalculator.exceptions.Exception;
+import com.example.nutritioncalculator.models.DailyMenu;
 import com.example.nutritioncalculator.repositories.ProductRepository;
+import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
 import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import com.example.nutritioncalculator.services.interfaces.ProductService;
 import com.example.nutritioncalculator.utils.ProductConverter;
@@ -25,6 +27,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductDailyMenuService productDailyMenuService;
+
+    @Autowired
+    private DailyMenuService dailyMenuService;
 
     @Override
     public List<ProductDto> getAllProduct() {
@@ -69,11 +74,19 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct(int id) {
         productDailyMenuService.removeAllByProduct(productRepository.findById(id).orElseThrow(() -> new Exception("Не удалось найти продукт")));
         productRepository.deleteById(id);
+        List<DailyMenu> dailyMenus = dailyMenuService.getAll();
+        for (DailyMenu dailyMenu : dailyMenus) {
+            dailyMenuService.saveNew(dailyMenu.getId());
+        }
     }
 
     @Override
     public void updateProduct(ProductDto productDto) {
         productRepository.save(convertProductDtoToEntity(productDto));
+        List<DailyMenu> dailyMenus = dailyMenuService.getAll();
+        for (DailyMenu dailyMenu : dailyMenus) {
+            dailyMenuService.saveNew(dailyMenu.getId());
+        }
     }
 
 }

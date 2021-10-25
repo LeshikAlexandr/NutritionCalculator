@@ -18,4 +18,6 @@ public interface ProductDailyMenuService {
     void removeAllByProduct(Product product);
 
     void removeAllByProductAndEatingAndDailyMenuId(int productId, Eating eating, int dailyMenuId);
+
+    List<ProductDailyMenu> getByDailyMenuIdAndEating(int dailyMenuId, Eating eating);
 }

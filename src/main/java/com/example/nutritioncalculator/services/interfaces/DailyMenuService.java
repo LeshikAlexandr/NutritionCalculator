@@ -3,6 +3,7 @@ package com.example.nutritioncalculator.services.interfaces;
 import com.example.nutritioncalculator.controllers.dto.DailyMenuDto;
 import com.example.nutritioncalculator.controllers.dto.ProductDto;
 import com.example.nutritioncalculator.models.Customer;
+import com.example.nutritioncalculator.models.DailyMenu;
 import com.example.nutritioncalculator.models.Eating;
 import com.example.nutritioncalculator.models.Product;
 
@@ -26,4 +27,6 @@ public interface DailyMenuService {
     List<DailyMenuDto> getAllDailyMenus(int customerId);
 
     void saveNew(int dailyMenuId);
+
+    List<DailyMenu> getAll();
 }

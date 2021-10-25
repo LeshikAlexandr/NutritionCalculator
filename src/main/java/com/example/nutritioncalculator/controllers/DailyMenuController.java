@@ -1,7 +1,9 @@
 package com.example.nutritioncalculator.controllers;
 
+import com.example.nutritioncalculator.controllers.dto.DailyMenuDto;
 import com.example.nutritioncalculator.controllers.dto.ProductDto;
 import com.example.nutritioncalculator.models.Eating;
+import com.example.nutritioncalculator.models.ProductDailyMenu;
 import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
 import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,11 @@ public class DailyMenuController {
 
     @GetMapping("/daily-menus")
     public String getDailyMenuById(Model model, Principal principal) {
-        model.addAttribute("dailyMenu", dailyMenuService.getDailyMenuDto(principal.getName()));
+        DailyMenuDto dailyMenuDto = dailyMenuService.getDailyMenuDto(principal.getName());
+        model.addAttribute("productDailyMenuBreakfast", productDailyMenuService.getByDailyMenuIdAndEating(dailyMenuDto.getId(), Eating.BREAKFAST));
+        model.addAttribute("productDailyMenuDinner", productDailyMenuService.getByDailyMenuIdAndEating(dailyMenuDto.getId(), Eating.DINNER));
+        model.addAttribute("productDailyMenuSupper", productDailyMenuService.getByDailyMenuIdAndEating(dailyMenuDto.getId(), Eating.SUPPER));
+        model.addAttribute("dailyMenu", dailyMenuDto);
         return "dailymenu/getDailyMenu";
     }
 
