@@ -2,6 +2,7 @@ package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.CommentDto;
 import com.example.nutritioncalculator.controllers.dto.PostDto;
+import com.example.nutritioncalculator.models.Comment;
 import com.example.nutritioncalculator.models.Post;
 import com.example.nutritioncalculator.services.interfaces.CommentService;
 import com.example.nutritioncalculator.services.interfaces.CustomerService;
@@ -64,16 +65,18 @@ public class PostController {
                                 @PathVariable("id") int postId,
                                 Principal principal) {
         if (bindingResult.hasErrors()) {
-            return "redirect:/profile";
+            return "redirect:/";
         }
         commentService.saveComment(file, commentDto, principal.getName(), postId);
-        return "redirect:/profile";
+        return "redirect:/posts/" + postId;
     }
 
     @PostMapping("/comment/delete/{id}")
     public String deleteComment(@PathVariable("id") int id) {
+        Comment comment = commentService.getComment(id);
+        int postId = comment.getPost().getId();
         commentService.deleteComment(id);
-        return "redirect:/profile";
+        return "redirect:/posts/" + postId;
     }
 
     @PostMapping("/delete/{id}")

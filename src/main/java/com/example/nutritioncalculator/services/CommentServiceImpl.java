@@ -45,6 +45,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
+    public Comment getComment(int id) {
+        return commentRepository.findById(id).orElseThrow(() -> new Exception("Не удалось найти комментарий"));
+    }
+
+    @Override
     public List<Comment> getAllComments() {
         return null;
     }
