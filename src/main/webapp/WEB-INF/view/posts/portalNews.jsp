@@ -119,14 +119,12 @@
             <ul class="list-listings">
                 <li class="featured">
                     <div class="listing-header bg-base">
-
                         <c:if test="${customer == null}">
-                            Portal posts
+                            <spring:message code="portal_news"/>
                         </c:if>
                         <c:if test="${customer != null}">
-                            ${customer.login} posts
+                            ${customer.login} <spring:message code="posts"/>
                         </c:if>
-
                     </div>
                     <c:forEach var="post" items="${posts}">
                         <div class="listing-body">
@@ -153,9 +151,11 @@
         </div>
     </div>
     <div class="center" style="margin: 10px">
-        <form action="posts/new" method="get">
-            <button type="submit" class="btn btn-outline-success"><p><spring:message code="add_post"/></p></button>
-        </form>
+        <c:if test="${customer != null}">
+            <form action="/posts/new" method="get">
+                <button type="submit" class="btn btn-outline-success"><p><spring:message code="add_post"/></p></button>
+            </form>
+        </c:if>
     </div>
 </div>
 </body>
