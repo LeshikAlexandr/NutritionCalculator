@@ -394,7 +394,9 @@
                 <div class="post-content">
                     <h3>${post.title}</h3>
                     <form method="post" action="/posts/delete/${post.id}">
-                        <button class="btn btn-primary m-1"><spring:message code="delete_post"/></button>
+                        <c:if test="${customer.login eq post.customer.login}">
+                            <button class="btn btn-primary m-1"><spring:message code="delete_post"/></button>
+                        </c:if>
                     </form>
                     <ul class="post-meta list-inline">
                         <li class="list-inline-item">
@@ -427,12 +429,13 @@
                                                 <li><i class="fa fa-calendar"></i>${comment.createdDate}</li>
                                             </ul>
                                         </div>
-                                        <c:if test="${comment.customer.id == customer.id}">
-                                            <form:form action="/posts/comment/delete/${comment.id}" method="post">
-                                                <button type="submit" class="btn btn-outline-success"><spring:message
-                                                        code="delete_comment"/></button>
-                                            </form:form>
-                                        </c:if>
+                                            <c:if test="${comment.customer.id == customer.id && customer.login ne ('admin')}">
+                                                <form:form action="/posts/comment/delete/${comment.id}" method="post">
+                                                    <button type="submit" class="btn btn-outline-success">
+                                                        <spring:message
+                                                                code="delete_comment"/></button>
+                                                </form:form>
+                                            </c:if>
                                         <sec:authorize access="hasRole('ADMIN')">
                                             <form:form action="/posts/comment/delete/${comment.id}" method="post">
                                                 <button type="submit" class="btn btn-outline-success"><spring:message

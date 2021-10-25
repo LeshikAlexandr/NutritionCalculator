@@ -119,7 +119,6 @@
             <ul class="list-listings">
                 <li class="featured">
                     <div class="listing-header bg-base">
-                        Portal posts
                     </div>
                     <c:forEach var="post" items="${posts}">
                         <div class="listing-body">

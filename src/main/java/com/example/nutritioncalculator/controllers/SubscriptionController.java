@@ -40,11 +40,11 @@ public class SubscriptionController {
         return "redirect:/subscriptions/all-customers";
     }
 
-    @GetMapping("/{login}/posts")
-    public String getCustomerPosts(@PathVariable("login") String login, Model model) {
-        model.addAttribute("customerPosts", postService.getAllCustomerPosts(login));
-        return "subscriptions/someCustomerPage";
-    }
+//    @GetMapping("/{login}/posts")
+//    public String getCustomerPosts(@PathVariable("login") String login, Model model) {
+//        model.addAttribute("customerPosts", postService.getAllCustomerPosts(login));
+//        return "subscriptions/someCustomerPage";
+//    }
 
     @PostMapping("/delete_subscriber/{id}")
     public String deleteSubscriber(@PathVariable("id") int id, Principal principal) {
@@ -60,6 +60,14 @@ public class SubscriptionController {
         model.addAttribute("customer", customerDto);
         model.addAttribute("customers", customerService.getAllSubscribers(login));
         return "subscriptions/allCustomers";
+    }
+
+    @GetMapping("/subscriptions_posts/")
+    public String getAllSubscriptionsPosts(Model model, Principal principal) {
+        String login = principal.getName();
+        model.addAttribute("customer", customerService.getCustomer(login));
+        model.addAttribute("posts", postService.getAllSubscribersPosts(login));
+        return "posts/portalNews";
     }
 
 }

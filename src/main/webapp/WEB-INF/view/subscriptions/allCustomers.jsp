@@ -69,7 +69,7 @@
                                          class="profile-photo-lg">
                                 </div>
                                 <div class="col-md-3 col-sm-7">
-                                    <h5><a href="#" class="profile-link">${someCustomer.login}</a></h5>
+                                    <h5><a href="/customers/${someCustomer.login}/posts" class="profile-link">${someCustomer.login}</a></h5>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
                                     <c:if test="${customer.usernames.contains(someCustomer.login)}">

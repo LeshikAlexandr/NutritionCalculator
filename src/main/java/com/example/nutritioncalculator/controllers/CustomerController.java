@@ -64,4 +64,11 @@ public class CustomerController {
         model.addAttribute("posts", postService.getAllCustomerPosts(login));
         return "posts/portalNews";
     }
+
+    @GetMapping("/{login}/posts")
+    public String getCustomerPosts(@PathVariable String login, Model model) {
+        model.addAttribute("customer", customerService.getCustomer(login));
+        model.addAttribute("posts", postService.getAllCustomerPosts(login));
+        return "posts/portalNews";
+    }
 }

@@ -92,6 +92,10 @@
                                     <button class="btn btn-outline-primary m-1"><spring:message
                                             code="subscriptions"/></button>
                                 </form>
+                                <form method="get" action="/subscriptions/subscriptions_posts/">
+                                    <button class="btn btn-outline-primary m-1"><spring:message
+                                            code="my_timeline"/></button>
+                                </form>
                             </div>
                         </div>
                     </div>
