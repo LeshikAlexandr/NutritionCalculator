@@ -60,6 +60,7 @@ public class CustomerController {
     @GetMapping("/my_posts")
     public String profile(Model model, Principal principal) {
         String login = principal.getName();
+        model.addAttribute("customer", customerService.getCustomer(login));
         model.addAttribute("posts", postService.getAllCustomerPosts(login));
         return "posts/portalNews";
     }

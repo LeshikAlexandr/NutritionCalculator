@@ -119,7 +119,14 @@
             <ul class="list-listings">
                 <li class="featured">
                     <div class="listing-header bg-base">
-                        Portal posts
+
+                        <c:if test="${customer == null}">
+                            Portal posts
+                        </c:if>
+                        <c:if test="${customer != null}">
+                            ${customer.login} posts
+                        </c:if>
+
                     </div>
                     <c:forEach var="post" items="${posts}">
                         <div class="listing-body">
