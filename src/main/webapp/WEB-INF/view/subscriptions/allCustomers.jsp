@@ -72,14 +72,18 @@
                                     <h5><a href="#" class="profile-link">${someCustomer.login}</a></h5>
                                 </div>
                                 <div class="col-md-3 col-sm-3">
-                                    <form action="/subscriptions/add_follower/${someCustomer.id}" method="post">
-                                        <button class="btn btn-primary pull-right"><spring:message code="subscribe"/></button>
-                                    </form>
-                                </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <form action="/subscriptions/delete_subscriber/${someCustomer.id}" method="post">
-                                        <button class="btn btn-primary pull-right"><spring:message code="unsubscribe"/></button>
-                                    </form>
+                                    <c:if test="${customer.usernames.contains(someCustomer.login)}">
+                                        <form action="/subscriptions/delete_subscriber/${someCustomer.id}" method="post">
+                                            <button class="btn btn-secondary pull-right"><spring:message
+                                                    code="unsubscribe"/></button>
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${!(customer.usernames.contains(someCustomer.login))}">
+                                        <form action="/subscriptions/add_subscriber/${someCustomer.id}" method="post">
+                                            <button class="btn btn-primary pull-right"><spring:message
+                                                    code="subscribe"/></button>
+                                        </form>
+                                    </c:if>
                                 </div>
                             </div>
                         </c:if>

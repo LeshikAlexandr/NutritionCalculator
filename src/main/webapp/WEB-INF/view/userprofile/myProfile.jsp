@@ -88,6 +88,10 @@
                                     <button class="btn btn-outline-primary m-1"><spring:message
                                             code="upload_photo"/></button>
                                 </form>
+                                <form method="get" action="/subscriptions/my_subscriptions">
+                                    <button class="btn btn-outline-primary m-1"><spring:message
+                                            code="subscriptions"/></button>
+                                </form>
                             </div>
                         </div>
                     </div>
