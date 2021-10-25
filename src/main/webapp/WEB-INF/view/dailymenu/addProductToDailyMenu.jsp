@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add product</title>
     <style>
         .header {
             padding: 80px;

@@ -5,6 +5,9 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <title>New post</title>
+</head>
 
 <body>
 
