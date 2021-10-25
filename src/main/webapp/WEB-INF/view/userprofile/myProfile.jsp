@@ -79,10 +79,12 @@
                                   height="450" width="300">
                             <div class="mt-3">
                                 <h4>${user.login}</h4>
-                                <button class="btn btn-primary m-1">Follow</button>
-                                <button class="btn btn-outline-primary m-1">Posts</button>
+                                <button class="btn btn-primary m-1">Follow (убрать)</button>
+                                <form method="get" action="/customers/my_posts">
+                                    <button class="btn btn-outline-primary m-1"><spring:message code="my_posts"/></button>
+                                </form>
                                 <form method="get" action="/upload">
-                                    <button class="btn btn-outline-primary m-1">Upload photo</button>
+                                    <button class="btn btn-outline-primary m-1"><spring:message code="upload_photo"/></button>
                                 </form>
                             </div>
                         </div>

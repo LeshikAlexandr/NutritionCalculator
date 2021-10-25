@@ -3,6 +3,7 @@ package com.example.nutritioncalculator.controllers;
 import com.example.nutritioncalculator.controllers.dto.CustomerDto;
 import com.example.nutritioncalculator.services.interfaces.CustomerService;
 import com.example.nutritioncalculator.services.interfaces.PhotoService;
+import com.example.nutritioncalculator.services.interfaces.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.Model;
@@ -21,6 +22,9 @@ public class CustomerController {
 
     @Autowired
     private PhotoService photoService;
+
+    @Autowired
+    private PostService postService;
 
     @GetMapping("/profile")
     public String userProfile(Principal principal, Model model) {
@@ -51,5 +55,12 @@ public class CustomerController {
         }
         customerService.updateCustomer(id, customerDto);
         return "redirect:/";
+    }
+
+    @GetMapping("/my_posts")
+    public String profile(Model model, Principal principal) {
+        String login = principal.getName();
+        model.addAttribute("posts", postService.getAllCustomerPosts(login));
+        return "posts/portalNews";
     }
 }
