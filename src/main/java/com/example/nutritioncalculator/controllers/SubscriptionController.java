@@ -33,7 +33,7 @@ public class SubscriptionController {
         return "subscriptions/allCustomers";
     }
 
-    @PostMapping("/add_follower/{id}")
+    @PostMapping("/add_subscriber/{id}")
     public String addSubscriber(@PathVariable("id") int id, Principal principal) {
         String login = principal.getName();
         customerService.addSubscribe(login, id);
