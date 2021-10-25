@@ -53,4 +53,13 @@ public class SubscriptionController {
         return "redirect:/subscriptions/all-customers";
     }
 
+    @GetMapping("/my_subscriptions")
+    public String getMySubscriptions(Model model, Principal principal) {
+        String login = principal.getName();
+        CustomerDto customerDto = customerService.getCustomer(login);
+        model.addAttribute("customer", customerDto);
+        model.addAttribute("customers", customerService.getAllSubscribers(login));
+        return "subscriptions/allCustomers";
+    }
+
 }

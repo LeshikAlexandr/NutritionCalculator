@@ -6,6 +6,11 @@ import com.example.nutritioncalculator.controllers.dto.CustomerRegistrationDto;
 import com.example.nutritioncalculator.models.Customer;
 import lombok.experimental.UtilityClass;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @UtilityClass
 public class CustomerConverter {
 
@@ -22,6 +27,8 @@ public class CustomerConverter {
                 .activity(customer.getActivity())
                 .roles(customer.getRoles())
                 .sex(customer.getSex())
+                .followers(customer.getFollowers())
+                .usernames(convertCustomerToCustomerDto(customer.getFollowers()))
                 .build();
     }
 
@@ -37,6 +44,7 @@ public class CustomerConverter {
                 .activity(customerDto.getActivity())
                 .roles(customerDto.getRoles())
                 .sex(customerDto.getSex())
+                .followers(customerDto.getFollowers())
                 .build();
     }
 
@@ -56,5 +64,13 @@ public class CustomerConverter {
                 .login(customerRegistrationDto.getLogin())
                 .password(customerRegistrationDto.getPassword())
                 .build();
+    }
+
+    private Set<String> convertCustomerToCustomerDto(Set<Customer> customers) {
+        Set<String> logins = new HashSet<>();
+        for (Customer customer : customers) {
+            logins.add(customer.getLogin());
+        }
+        return logins;
     }
 }

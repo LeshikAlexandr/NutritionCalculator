@@ -1,10 +1,7 @@
 package com.example.nutritioncalculator.controllers.dto;
 
 
-import com.example.nutritioncalculator.models.Activity;
-import com.example.nutritioncalculator.models.Photo;
-import com.example.nutritioncalculator.models.Role;
-import com.example.nutritioncalculator.models.Sex;
+import com.example.nutritioncalculator.models.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,6 +33,8 @@ public class CustomerDto {
     private String login;
     private String password;
     private Set<Role> roles;
+    private Set<Customer> followers;
+    private Set<String> usernames;
     private Photo photo;
     private double basicMetabolism;
     private double weightLossCalories;
