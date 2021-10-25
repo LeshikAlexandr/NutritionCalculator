@@ -46,7 +46,7 @@ public class PostController {
             return "posts/new";
         }
         postService.savePost(file, postDto, principal.getName());
-        return "redirect:/profile";
+        return "redirect:/";
     }
 
     @GetMapping("/{id}")
