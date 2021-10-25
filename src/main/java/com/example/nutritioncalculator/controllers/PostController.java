@@ -82,6 +82,6 @@ public class PostController {
     @PostMapping("/delete/{id}")
     public String deletePost(@PathVariable("id") Integer id) {
         postService.deletePost(id);
-        return "redirect:/profile";
+        return "redirect:/customers/my_posts";
     }
 }

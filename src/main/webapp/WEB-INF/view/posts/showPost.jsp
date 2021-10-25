@@ -393,6 +393,9 @@
                 </div>
                 <div class="post-content">
                     <h3>${post.title}</h3>
+                    <form method="post" action="/posts/delete/${post.id}">
+                        <button class="btn btn-primary m-1"><spring:message code="delete_post"/></button>
+                    </form>
                     <ul class="post-meta list-inline">
                         <li class="list-inline-item">
                             <i class="fa fa-user-circle-o"></i> ${post.customer.login}
@@ -426,13 +429,15 @@
                                         </div>
                                         <c:if test="${comment.customer.id == customer.id}">
                                             <form:form action="/posts/comment/delete/${comment.id}" method="post">
-                                                <button type="submit" class="btn btn-outline-success"><spring:message code="delete_comment"/></button>
+                                                <button type="submit" class="btn btn-outline-success"><spring:message
+                                                        code="delete_comment"/></button>
                                             </form:form>
                                         </c:if>
                                         <sec:authorize access="hasRole('ADMIN')">
-                                        <form:form action="/posts/comment/delete/${comment.id}" method="post">
-                                            <button type="submit" class="btn btn-outline-success"><spring:message code="delete_comment"/></button>
-                                        </form:form>
+                                            <form:form action="/posts/comment/delete/${comment.id}" method="post">
+                                                <button type="submit" class="btn btn-outline-success"><spring:message
+                                                        code="delete_comment"/></button>
+                                            </form:form>
                                         </sec:authorize>
                                         </c:forEach>
                                     </div>
@@ -443,7 +448,8 @@
                                             <div class="row">
                                                 <div class="form-group col-xs-12 col-sm-9 col-lg-10">
                                                     <textarea class="form-control" id="message"
-                                                              placeholder="<spring:message code="your_comment"/>" required=""
+                                                              placeholder="<spring:message code="your_comment"/>"
+                                                              required=""
                                                               name="text"></textarea>
                                                 </div>
                                             </div>
@@ -453,7 +459,8 @@
                                                 <img src="/images/default/clip.png"
                                                      height="50px" width="50px"/>
                                             </label>
-                                            <button type="submit" class="btn btn-normal pull-right"><spring:message code="comment"/></button>
+                                            <button type="submit" class="btn btn-normal pull-right"><spring:message
+                                                    code="comment"/></button>
                                             <input id="file-input" type="file" name="file"/>
                                         </div>
                                     </form>
