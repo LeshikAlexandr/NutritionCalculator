@@ -76,15 +76,17 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <img src="${(photo != null && photo.url != null) ? photo.url : "/images/default/avatar7.png"}"
-                                  height="450" width="300">
+                                 height="450" width="300">
                             <div class="mt-3">
                                 <h4>${user.login}</h4>
                                 <button class="btn btn-primary m-1">Follow (убрать)</button>
                                 <form method="get" action="/customers/my_posts">
-                                    <button class="btn btn-outline-primary m-1"><spring:message code="my_posts"/></button>
+                                    <button class="btn btn-outline-primary m-1"><spring:message
+                                            code="my_posts"/></button>
                                 </form>
                                 <form method="get" action="/upload">
-                                    <button class="btn btn-outline-primary m-1"><spring:message code="upload_photo"/></button>
+                                    <button class="btn btn-outline-primary m-1"><spring:message
+                                            code="upload_photo"/></button>
                                 </form>
                             </div>
                         </div>
@@ -207,8 +209,9 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
-                                <a class="btn btn-info " target="__blank"
-                                   href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+                                <form action="/customers/update/${user.id}/" method="get">
+                                    <button type="submit" target="__blank" class="btn btn-info "><p text="edit_date"><spring:message code="edit"/></p></button>
+                                </form>
                             </div>
                         </div>
                     </div>

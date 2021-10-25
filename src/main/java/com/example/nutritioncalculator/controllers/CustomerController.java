@@ -40,13 +40,13 @@ public class CustomerController {
         return "security/login";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/update/{id}")
     public String edit(Model model, @PathVariable("id") Integer id) {
         model.addAttribute("customer", customerService.getCustomer(id));
         return "userprofile/update";
     }
 
-    @PostMapping("/edit/{id}")
+    @PostMapping("/update/{id}")
     public String update(@ModelAttribute("customer") @Valid CustomerDto customerDto,
                          BindingResult bindingResult,
                          @PathVariable("id") Integer id) {
@@ -54,7 +54,7 @@ public class CustomerController {
             return "userprofile/update";
         }
         customerService.updateCustomer(id, customerDto);
-        return "redirect:/";
+        return "redirect:/customers/profile";
     }
 
     @GetMapping("/my_posts")
