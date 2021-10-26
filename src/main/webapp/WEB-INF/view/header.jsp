@@ -25,7 +25,7 @@
         .header {
             padding: 80px;
             text-align: center;
-            background: #082f27;
+            background: linear-gradient(to right, blue, pink);
             color: white;
         }
     </style>
