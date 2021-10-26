@@ -196,8 +196,8 @@
                 </table>
             </div>
         </div>
-        <form action="/" method="get">
-            <input class="inputButton" type="submit" value="Назад"/>
+        <form action="/" method="get" style="margin-top: 5px">
+            <button type="submit" class="btn btn-outline-dark"><spring:message code="back"/></button>
         </form>
     </div>
 </section>
