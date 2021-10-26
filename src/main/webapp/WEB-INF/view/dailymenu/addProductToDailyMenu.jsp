@@ -80,12 +80,12 @@
 
             <form:hidden path="id"/>
 
-            Name:<form:input path="name"/><br>
-            Nominal calories:<form:input path="nominalCalories"/><br>
-            Protein:<form:input path="protein"/><br>
-            Fat:<form:input path="fat"/><br>
-            Carbohydrates:<form:input path="carbohydrates"/><br>
-            Weight:<form:input path="weight"/><br>
+            Name: <form:textarea rows="1" path="name" readonly="true"   /><br>
+            Nominal calories <form:textarea rows="1" path="nominalCalories" readonly="true"/><br>
+            Protein: <form:textarea rows="1" path="protein" readonly="true"/><br>
+            Fat: <form:textarea rows="1" path="fat" readonly="true"/><br>
+            Carbohydrates: <form:textarea rows="1" path="carbohydrates" readonly="true"/><br>
+            Weight: <form:input rows="1" path="weight"/><br>
             <input type="hidden" value="${eating}" name="eating" id="eating">
             <button class="submit-button" type="submit">+</button>
         </form:form>
