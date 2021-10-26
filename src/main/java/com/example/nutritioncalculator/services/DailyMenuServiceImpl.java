@@ -44,37 +44,7 @@ public class DailyMenuServiceImpl implements DailyMenuService {
         DailyMenu dailyMenu = dailyMenuRepository.findByCustomerLoginAndCreatedDate(login, LocalDate.now())
                 .orElseThrow(() -> new Exception("Не удалось найти Дневное меню"));
 
-        Map<Eating, List<Product>> productByEating = getProductsByEating(dailyMenu);
-
-        List<ProductDto> breakfastsProducts = getEatingProducts(productByEating.get(Eating.BREAKFAST), dailyMenu.getId(), Eating.BREAKFAST);
-        List<ProductDto> dinnerProducts = getEatingProducts(productByEating.get(Eating.DINNER), dailyMenu.getId(), Eating.DINNER);
-        List<ProductDto> supperProducts = getEatingProducts(productByEating.get(Eating.SUPPER), dailyMenu.getId(), Eating.SUPPER);
-
-        DailyMenuDto dailyMenuDto = DailyMenuConverter.convertDailyMenuEntityToDailyMenuDto(dailyMenu);
-        dailyMenuDto.setBreakfast(breakfastsProducts);
-        dailyMenuDto.setDinner(dinnerProducts);
-        dailyMenuDto.setSupper(supperProducts);
-
-        return dailyMenuDto;
-    }
-
-    @Override
-    public List<ProductDto> getEatingProducts(List<Product> products, int dailyMenuId, Eating eating) {
-
-        return Stream.ofNullable(products)
-                .flatMap(List::stream)
-                .map(ProductConverter::convertProductEntityToDto)
-                .map(productDto -> setFactualNutrientsForProductDto(dailyMenuId, eating, productDto))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public int getGeneralNutrients(List<ProductDto> products, Function<ProductDto, Integer> getter) {
-
-        return products.stream()
-                .map(getter::apply)
-                .flatMapToInt(IntStream::of)
-                .sum();
+        return addProductsToDailyMenuDto(dailyMenu);
     }
 
     @Override
@@ -96,38 +66,16 @@ public class DailyMenuServiceImpl implements DailyMenuService {
     @Override
     public void addProductToDailyMenu(int dailyMenuId, ProductDto productDto, Eating eating) {
 
-        // Создаём строку в таблице product_daily_menu и добавляем в неё ссылку daily_menu и product, также помещаем время приема пищи
         ProductDailyMenu productDailyMenuFromDb = productDailyMenuService.getProductDailyMenus(dailyMenuId, eating, productDto.getId());
 
-        // устанавливаем вес продукта
         int weight = productDailyMenuFromDb.getProductWeight() + productDto.getWeight();
         productDailyMenuFromDb.setProductWeight(weight);
         productDailyMenuService.save(productDailyMenuFromDb);
 
         DailyMenu dailyMenu = dailyMenuRepository.findById(dailyMenuId)
-                .orElseThrow(() -> new Exception("Не удалось найти Дневное меню id:"+ dailyMenuId));
+                .orElseThrow(() -> new Exception("Не удалось найти Дневное меню id: " + dailyMenuId));
 
-
-        Map<Eating, List<Product>> productByEating = getProductsByEating(dailyMenu);
-
-        List<ProductDto> breakfastsProducts = getEatingProducts(productByEating.get(Eating.BREAKFAST), dailyMenu.getId(), Eating.BREAKFAST);
-        List<ProductDto> dinnerProducts = getEatingProducts(productByEating.get(Eating.DINNER), dailyMenu.getId(), Eating.DINNER);
-        List<ProductDto> supperProducts = getEatingProducts(productByEating.get(Eating.SUPPER), dailyMenu.getId(), Eating.SUPPER);
-
-        dailyMenu.setGeneralCalories(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualCalories)
-                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualCalories)
-                + getGeneralNutrients(supperProducts, ProductDto::getFactualCalories));
-        dailyMenu.setGeneralProteins(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualProtein)
-                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualProtein)
-                + getGeneralNutrients(supperProducts, ProductDto::getFactualProtein));
-        dailyMenu.setGeneralFats(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualFat)
-                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualFat)
-                + getGeneralNutrients(supperProducts, ProductDto::getFactualFat));
-        dailyMenu.setGeneralCarbohydrates(getGeneralNutrients(breakfastsProducts, ProductDto::getFactualCarbohydrates)
-                + getGeneralNutrients(dinnerProducts, ProductDto::getFactualCarbohydrates)
-                + getGeneralNutrients(supperProducts, ProductDto::getFactualCarbohydrates));
-        dailyMenuRepository.save(dailyMenu);
-
+        setGeneralInformation(dailyMenu);
     }
 
     @Override
@@ -170,8 +118,59 @@ public class DailyMenuServiceImpl implements DailyMenuService {
     public void saveNew(int dailyMenuId) {
 
         DailyMenu dailyMenu = dailyMenuRepository.findById(dailyMenuId)
-                .orElseThrow(() -> new Exception("Не удалось найти Дневное меню id:"+ dailyMenuId));
+                .orElseThrow(() -> new Exception("Не удалось найти Дневное меню id:" + dailyMenuId));
 
+        setGeneralInformation(dailyMenu);
+    }
+
+    @Override
+    public List<DailyMenu> getAll() {
+        return dailyMenuRepository.findAll();
+    }
+
+    @Override
+    public List<ProductDto> getEatingProducts(List<Product> products, int dailyMenuId, Eating eating) {
+
+        return Stream.ofNullable(products)
+                .flatMap(List::stream)
+                .map(ProductConverter::convertProductEntityToDto)
+                .map(productDto -> setFactualNutrientsForProductDto(dailyMenuId, eating, productDto))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public int getGeneralNutrients(List<ProductDto> products, Function<ProductDto, Integer> getter) {
+
+        return products.stream()
+                .map(getter::apply)
+                .flatMapToInt(IntStream::of)
+                .sum();
+    }
+
+    @Override
+    public DailyMenuDto getDailyMenuDtoById(int dailyMenuId) {
+        DailyMenu dailyMenu = dailyMenuRepository.findById(dailyMenuId)
+                .orElseThrow(() -> new Exception("Не удалось найти Дневное меню"));
+
+        return addProductsToDailyMenuDto(dailyMenu);
+    }
+
+    private DailyMenuDto addProductsToDailyMenuDto(DailyMenu dailyMenu) {
+        Map<Eating, List<Product>> productByEating = getProductsByEating(dailyMenu);
+
+        List<ProductDto> breakfastsProducts = getEatingProducts(productByEating.get(Eating.BREAKFAST), dailyMenu.getId(), Eating.BREAKFAST);
+        List<ProductDto> dinnerProducts = getEatingProducts(productByEating.get(Eating.DINNER), dailyMenu.getId(), Eating.DINNER);
+        List<ProductDto> supperProducts = getEatingProducts(productByEating.get(Eating.SUPPER), dailyMenu.getId(), Eating.SUPPER);
+
+        DailyMenuDto dailyMenuDto = DailyMenuConverter.convertDailyMenuEntityToDailyMenuDto(dailyMenu);
+        dailyMenuDto.setBreakfast(breakfastsProducts);
+        dailyMenuDto.setDinner(dinnerProducts);
+        dailyMenuDto.setSupper(supperProducts);
+
+        return dailyMenuDto;
+    }
+
+    private void setGeneralInformation(DailyMenu dailyMenu) {
         Map<Eating, List<Product>> productByEating = getProductsByEating(dailyMenu);
 
         List<ProductDto> breakfastsProducts = getEatingProducts(productByEating.get(Eating.BREAKFAST), dailyMenu.getId(), Eating.BREAKFAST);
@@ -191,10 +190,6 @@ public class DailyMenuServiceImpl implements DailyMenuService {
                 + getGeneralNutrients(dinnerProducts, ProductDto::getFactualCarbohydrates)
                 + getGeneralNutrients(supperProducts, ProductDto::getFactualCarbohydrates));
         dailyMenuRepository.save(dailyMenu);
-    }
 
-    @Override
-    public List<DailyMenu> getAll() {
-        return dailyMenuRepository.findAll();
     }
 }

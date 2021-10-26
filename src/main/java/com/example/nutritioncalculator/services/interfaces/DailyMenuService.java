@@ -29,4 +29,6 @@ public interface DailyMenuService {
     void saveNew(int dailyMenuId);
 
     List<DailyMenu> getAll();
+
+    DailyMenuDto getDailyMenuDtoById(int dailyMenuId);
 }

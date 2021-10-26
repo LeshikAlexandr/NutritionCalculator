@@ -9,189 +9,46 @@
     <meta charset="UTF-8">
     <title>Food diary</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <style>
-        .icon_de {
-            float: left;
-            margin: 0;
-        }
-        .container {
-            display: -webkit-flex;
-            display: flex;
-            height: 100%;
-        }
-
-        h1 {
-            font-size: 30px;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: 300;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        table {
-            width: 100%;
-            table-layout: fixed;
-        }
-
-        .tbl-header {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-
-        .tbl-content {
-            height: 300px;
-            overflow-x: auto;
-            margin-top: 0px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        th {
-            padding: 20px 15px;
-            text-align: left;
-            font-weight: 500;
-            font-size: 12px;
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        td {
-            padding: 15px;
-            text-align: left;
-            vertical-align: middle;
-            font-weight: 300;
-            font-size: 12px;
-            color: #fff;
-            border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-        }
-
-
-        /* demo styles */
-
-        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
-        body {
-            background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-            background: linear-gradient(to right, #25c481, #25b7c4);
-            font-family: 'Roboto', sans-serif;
-        }
-
-        section {
-            margin: 50px;
-        }
-
-
-        /* follow me template */
-        .made-with-love {
-            margin-top: 40px;
-            padding: 10px;
-            clear: left;
-            text-align: center;
-            font-size: 10px;
-            font-family: arial;
-            color: #fff;
-        }
-
-        .made-with-love i {
-            font-style: normal;
-            color: #F50057;
-            font-size: 14px;
-            position: relative;
-            top: 2px;
-        }
-
-        .made-with-love a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .made-with-love a:hover {
-            text-decoration: underline;
-        }
-
-
-        /* for custom scrollbar for webkit browser*/
-
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .add {
-            float: right;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .inputButton {
-            position: relative;
-            width: 85%;
-            height: 50px;
-            display: block;
-            margin: 30px auto 30px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -ms-border-radius: 5px;
-            border-radius: 5px;
-            color: white;
-            background-color: #0d6958;
-            border: none;
-            -webkit-box-shadow: 0 5px 0 #769f96;
-            -moz-box-shadow: 0 5px 0 #082f27;
-        }
-        .center {
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
 <c:import url="../header.jsp"/>
-<h1>Журнал питания</h1>
-<div class="tbl-header">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <thead>
-        <tr>
-            <th>Дата</th>
-            <th>Калории</th>
-            <th>Белки</th>
-            <th>Жиры</th>
-            <th>Углеводы</th>
 
-        </tr>
-        </thead>
-    </table>
-</div>
-<div class="tbl-content">
-    <table cellpadding="0" cellspacing="0" border="0">
-        <tbody>
-        <c:forEach var="dailyMenu" items="${foodDiary}">
-        <tr>
-            <td>${dailyMenu.createdDate}</td>
-            <td>${dailyMenu.generalCalories}</td>
-            <td>${dailyMenu.generalProteins}</td>
-            <td>${dailyMenu.generalFats}</td>
-            <td>${dailyMenu.generalCarbohydrates}</td>
-        </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-</div>
-<div class="center">
-    <!--    <form th:action="@{/profile}" method="get">-->
-    <!--        <button type="submit" class="btn btn-outline-light">Назад</button>-->
-    <!--    </form>-->
-    <div class="center">
-        <form action="/" method="get">
-            <button type="submit" class="btn btn-outline-light">Назад</button>
+<section>
+    <div class="container">
+        <div class="row" style="margin-top: 30px; margin-bottom: 10px">
+            <div>
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="row"><spring:message code="date"/></th>
+                            <th scope="row"><spring:message code="calories"/></th>
+                            <th scope="row"><spring:message code="proteins"/></th>
+                            <th scope="row"><spring:message code="fats"/></th>
+                            <th scope="row"><spring:message code="carbohydrates"/></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="dailyMenu" items="${foodDiary}">
+                            <tr>
+                                <th><a href="/food-diaries/show?id=${dailyMenu.id}"/> ${dailyMenu.createdDate}</th>
+                                <th>${dailyMenu.generalCalories}</th>
+                                <th>${dailyMenu.generalProteins}</th>
+                                <th>${dailyMenu.generalFats}</th>
+                                <th>${dailyMenu.generalCarbohydrates}</th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <form action="/" method="get" style="margin-top: 5px">
+            <button type="submit" class="btn btn-outline-dark"><spring:message code="back"/></button>
         </form>
     </div>
-</div>
+</section>
+</body>
 </body>
 </html>
