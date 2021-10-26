@@ -394,7 +394,7 @@
                 <div class="post-content">
                     <h3>${post.title}</h3>
                     <form method="post" action="/posts/delete/${post.id}">
-                        <c:if test="${customer.login eq post.customer.login}">
+                        <c:if test="${customer.login eq post.customer.login || customer.login eq ('admin')}">
                             <button class="btn btn-primary m-1"><spring:message code="delete_post"/></button>
                         </c:if>
                     </form>
@@ -415,7 +415,6 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <c:forEach var="comment" items="${post.comments}">
-                                    <!-- COMMENT 1 - START -->
                                     <div class="media">
                                         <c:if test="${comment.photo != null}">
                                             <a class="pull-left" href="#"><img class="media-object"
