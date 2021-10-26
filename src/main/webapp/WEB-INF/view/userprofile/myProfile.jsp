@@ -79,7 +79,6 @@
                                  height="450" width="300">
                             <div class="mt-3">
                                 <h4>${user.login}</h4>
-                                <button class="btn btn-primary m-1">Follow (убрать)</button>
                                 <form method="get" action="/customers/my_posts">
                                     <button class="btn btn-outline-primary m-1"><spring:message
                                             code="my_posts"/></button>
