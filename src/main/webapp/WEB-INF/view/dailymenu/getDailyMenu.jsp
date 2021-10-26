@@ -109,7 +109,7 @@
                                 <th>${product.factualProtein}</th>
                                 <th>${product.factualFat}</th>
                                 <th>${product.factualCarbohydrates}</th>
-                                <th><c:forEach var="element" items="${productDailyMenuBreakfast}">
+                                <th><c:forEach var="element" items="${productDailyMenuDinner}">
                                     <c:if test="${element.product.name eq product.name}">
                                         ${element.productWeight}
                                     </c:if>
@@ -164,7 +164,7 @@
                                 <th>${product.factualProtein}</th>
                                 <th>${product.factualFat}</th>
                                 <th>${product.factualCarbohydrates}</th>
-                                <th><c:forEach var="element" items="${productDailyMenuBreakfast}">
+                                <th><c:forEach var="element" items="${productDailyMenuSupper}">
                                     <c:if test="${element.product.name eq product.name}">
                                         ${element.productWeight}
                                     </c:if>
