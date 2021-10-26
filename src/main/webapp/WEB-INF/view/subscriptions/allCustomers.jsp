@@ -46,6 +46,13 @@
             width: 80px;
             border-radius: 50%;
         }
+
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+        body {
+            background: -webkit-linear-gradient(left, green, blue);
+            background: radial-gradient(circle at 50% 50%, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+            font-family: 'Roboto', sans-serif;
+        }
     </style>
 </head>
 <body>
