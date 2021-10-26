@@ -10,19 +10,14 @@
     <title>Update product</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" crossorigin="anonymous">
     <style>
-        .header {
-            padding: 80px;
-            text-align: center;
-            background: #1abc9c;
-            color: white;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
+        .center {
+            margin: 0;
+            background: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
         }
     </style>
 </head>
@@ -30,48 +25,48 @@
 
 <c:import url="../header.jsp"/>
 
-<form:form class="pure-form pure-form-aligned" action="/products/update/${product.id}" modelAttribute="product"
-           method="post">
-    <fieldset>
-        <div class="pure-control-group">
-            <label for="name">Название продукта: </label>
-            <form:input path="name" id="name" placeholder="Название продукта"/>
-            <form:errors path="name"/>
-        </div>
-        <p></p>
-        <div class="pure-control-group">
-            <label for="nominalCalories">Калорийность</label>
-            <form:input path="nominalCalories" id="nominalCalories" placeholder="Калорийность"/>
-            <form:errors path="nominalCalories"/>
-        </div>
-        <p></p>
+<div class="center">
+    <form:form class="pure-form pure-form-aligned" action="/products/update/${product.id}" modelAttribute="product"
+               method="post">
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="name"><spring:message code="products_name"/>: </label>
+                <form:input path="name" id="name" placeholder="Название продукта"/>
+                <form:errors path="name"/>
+            </div>
+            <p></p>
+            <div class="pure-control-group">
+                <label for="nominalCalories"><spring:message code="calories"/>: </label>
+                <form:input path="nominalCalories" id="nominalCalories" placeholder="Калорийность"/>
+                <form:errors path="nominalCalories"/>
+            </div>
+            <p></p>
 
-        <div class="pure-control-group">
-            <label for="protein">Белки</label>
-            <form:input path="protein" id="protein" placeholder="Белки"/>
-            <form:errors path="protein"/>
-        </div>
-        <p></p>
+            <div class="pure-control-group">
+                <label for="protein"><spring:message code="proteins"/>: </label>
+                <form:input path="protein" id="protein" placeholder="Белки"/>
+                <form:errors path="protein"/>
+            </div>
+            <p></p>
 
-        <div class="pure-control-group">
-            <label for="fat">Жиры</label>
-            <form:input path="fat" id="fat" placeholder="Жиры"/>
-            <form:errors path="fat"/>
-        </div>
-        <p></p>
+            <div class="pure-control-group">
+                <label for="fat"><spring:message code="fats"/>: </label>
+                <form:input path="fat" id="fat" placeholder="Жиры"/>
+                <form:errors path="fat"/>
+            </div>
+            <p></p>
 
-        <div class="pure-control-group">
-            <label for="carbohydrates">Углеводы </label>
-            <form:input path="carbohydrates" id="carbohydrates" placeholder="Углеводы"/>
-            <form:errors path="carbohydrates"/>
-        </div>
-        <p></p>
+            <div class="pure-control-group">
+                <label for="carbohydrates"><spring:message code="carbohydrates"/>: </label>
+                <form:input path="carbohydrates" id="carbohydrates" placeholder="Углеводы"/>
+                <form:errors path="carbohydrates"/>
+            </div>
 
-        <div class="pure-controls">
-            <button type="submit" class="pure-button pure-button-primary">Редактировать продукт</button>
-        </div>
-
-    </fieldset>
-</form:form>
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Редактировать продукт</button>
+            </div>
+        </fieldset>
+    </form:form>
+</div>
 </body>
 </html>
