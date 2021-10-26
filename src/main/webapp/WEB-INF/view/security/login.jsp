@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=WINDOWS-1251" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!doctype html>
 <html lang="en">
@@ -22,19 +24,18 @@
     <div class="row">
         <div class="col-2 offset-5">
             <form action="login" method="post">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal"><spring:message code="please_sign_in"/></h1>
 
                 <div class="form-floating">
                     <input type="text" class="form-control" name='username' id="floatingInput" placeholder="Login">
-                    <label for="floatingInput">Login</label>
+                    <label for="floatingInput"><spring:message code="login"/></label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" name='password' id="floatingPassword"
                            placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    <label for="floatingPassword"><spring:message code="password"/></label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+                <button class="w-100 btn btn-lg btn-primary" type="submit"><spring:message code="sign_in"/></button>
             </form>
         </div>
     </div>
