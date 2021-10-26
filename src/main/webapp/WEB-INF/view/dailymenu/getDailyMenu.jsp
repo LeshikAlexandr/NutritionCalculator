@@ -10,268 +10,200 @@
     <title>Daily menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <style>
-
-        .icon_de {
-            float: left;
-            margin: 0;
-        }
-
-        .inputButton {
-            position: relative;
-            display: block;
-            margin: 30px auto 30px;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            -ms-border-radius: 5px;
-            border-radius: 2px;
-            color: white;
-            background-color: #333;
-            border: none;
-            -webkit-box-shadow: 0 5px 0 #769f96;
-            -moz-box-shadow: 0 5px 0 #082f27;
-            float: right
-        }
-
-        .header {
-            padding: 80px;
-            text-align: center;
-            background: #1abc9c;
-            color: white;
-        }
-
-        table {
-            width: 750px;
-            border-collapse: collapse;
-            margin: 50px auto;
-        }
-
-        th {
-            background: #082f27;
-            color: white;
-            font-weight: bold;
-        }
-
-        td, th {
-            padding: 10px;
-            border: 2px solid #ccc;
-            text-align: left;
-            font-size: 18px;
-        }
-
-        .labels tr td {
-            background-color: #0d6958;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .label tr td label {
-            display: block;
-        }
-
-
-        [data-toggle="toggle"] {
-            display: none;
-        }
-
-        /* Style the navigation bar links */
-        .nnavbar a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-        }
-
-
-        /* Right-aligned link */
-        .nnavbar a.right {
-            float: right;
-        }
-
-        /* Change color on hover */
-        .nnavbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        /* Active/current link */
-        .nnavbar a.active {
-            background-color: #666;
-            color: white;
-        }
-
-        Column container
-        .row {
-            display: -ms-flexbox; /* IE10 */
-            display: flex;
-            -ms-flex-wrap: wrap; /* IE10 */
-            flex-wrap: wrap;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-            $('[data-toggle="toggle"]').change(function () {
-                $(this).parents().next('.hide').toggle();
-            });
-        });
-    </script>
 </head>
 <body>
 
 <c:import url="../header.jsp"/>
 
-<table>
-    <thead>
-    <tr>
-        <th><p>Имя продукта</p></th>
-        <th><p>Калории на 100г</p></th>
-        <th><p>Калории на порцию</p></th>
-        <th><p>Белки</p></th>
-        <th><p>Жиры</p></th>
-        <th><p>Углеводы</p></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tbody class="labels">
-    <tr>
-        <td colspan="6">
-            <label><p>Завтрак</p></label>
-            <div>
-                <form action="/add" method="get">
-                    <button name="eating" value="BREAKFAST" class="btn btn-outline-light">Добавить продукт</button>
-                </form>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-    <tbody class="hide">
-    <tr>
-        <c:forEach var="product" items="${dailyMenu.breakfast}">
-            <td><span></span>${product.name}</td>
-            <td><span></span>${product.nominalCalories}</td>
-            <td><span></span>${product.factualCalories}</td>
-            <td><span></span>${product.factualProtein}</td>
-            <td><span></span>${product.factualFat}</td>
-            <td><span></span>${product.factualCarbohydrates}</td>
-            <td><span></span><c:forEach var="element" items="${productDailyMenuBreakfast}">
-                <c:if test="${element.product.name eq product.name}">
-                    ${element.productWeight}
-                </c:if>
-            </c:forEach>
-            </td>
-            <td><span></span>
-                <div class="center">
-                    <div class="center">
-                        <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
-                            <button name="eating" value="BREAKFAST" class="btn btn-outline-light">Удалить продукт
-                            </button>
-                        </form>
-                    </div>
+<section>
+    <div class="container">
+        <div class="card row" style="margin-top: 30px">
+            <a class="card-body text-dark " style="text-decoration: none" data-bs-toggle="collapse"
+               href="#multiCollapseExample" role="button"
+               aria-expanded="false" aria-controls="multiCollapseExample">
+                <spring:message code="breakfast"/>
+            </a>
+        </div>
+        <div class="row" style="margin-top: 2px; margin-bottom: 10px">
+            <div class="collapse multi-collapse" id="multiCollapseExample">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="row"><spring:message code="products_name"/></th>
+                            <th scope="row"><spring:message code="calories_for_100"/></th>
+                            <th scope="row"><spring:message code="calories_for_serving"/></th>
+                            <th scope="row"><spring:message code="proteins"/></th>
+                            <th scope="row"><spring:message code="fats"/></th>
+                            <th scope="row"><spring:message code="carbohydrates"/></th>
+                            <th scope="row"><spring:message code="weight"/></th>
+                            <th scope="row">
+                                <form action="/add" method="get">
+                                    <button name="eating" value="BREAKFAST" class="btn btn-outline-dark"><spring:message code="add_product"/>
+                                    </button>
+                                </form>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="product" items="${dailyMenu.breakfast}">
+                            <tr>
+                                <th>${product.name}</th>
+                                <th>${product.nominalCalories}</th>
+                                <th>${product.factualCalories}</th>
+                                <th>${product.factualProtein}</th>
+                                <th>${product.factualFat}</th>
+                                <th>${product.factualCarbohydrates}</th>
+                                <th><c:forEach var="element" items="${productDailyMenuBreakfast}">
+                                    <c:if test="${element.product.name eq product.name}">
+                                        ${element.productWeight}
+                                    </c:if>
+                                </c:forEach></th>
+                                <th>
+                                    <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
+                                        <button name="eating" value="BREAKFAST" class="btn btn-outline-dark"><spring:message code="delete_product"/>
+                                        </button>
+                                    </form>
+                                </th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
-            </td>
+            </div>
+        </div>
+        <div class="card row" style="margin-top: 30px">
+            <a class="card-body text-dark " style="text-decoration: none" data-bs-toggle="collapse"
+               href="#multiCollapseExample1" role="button"
+               aria-expanded="false" aria-controls="multiCollapseExample1">
+                <spring:message code="dinner"/>
+            </a>
+        </div>
+        <div class="row" style="margin-top: 2px; margin-bottom: 10px">
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="row"><spring:message code="products_name"/></th>
+                            <th scope="row"><spring:message code="calories_for_100"/></th>
+                            <th scope="row"><spring:message code="calories_for_serving"/></th>
+                            <th scope="row"><spring:message code="proteins"/></th>
+                            <th scope="row"><spring:message code="fats"/></th>
+                            <th scope="row"><spring:message code="carbohydrates"/></th>
+                            <th scope="row"><spring:message code="weight"/></th>
+                            <th scope="row">
+                                <form action="/add" method="get">
+                                    <button name="eating" value="DINNER" class="btn btn-outline-dark"><spring:message code="add_product"/>
+                                    </button>
+                                </form>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="product" items="${dailyMenu.dinner}">
+                            <tr>
+                                <th>${product.name}</th>
+                                <th>${product.nominalCalories}</th>
+                                <th>${product.factualCalories}</th>
+                                <th>${product.factualProtein}</th>
+                                <th>${product.factualFat}</th>
+                                <th>${product.factualCarbohydrates}</th>
+                                <th><c:forEach var="element" items="${productDailyMenuBreakfast}">
+                                    <c:if test="${element.product.name eq product.name}">
+                                        ${element.productWeight}
+                                    </c:if>
+                                </c:forEach></th>
+                                <th>
+                                    <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
+                                        <button name="eating" value="DINNER" class="btn btn-outline-dark"><spring:message code="delete_product"/>
+                                        </button>
+                                    </form>
+                                </th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card row" style="margin-top: 30px">
+            <a class="card-body text-dark " style="text-decoration: none" data-bs-toggle="collapse"
+               href="#multiCollapseExample2" role="button"
+               aria-expanded="false" aria-controls="multiCollapseExample2">
+                <spring:message code="supper"/>
+            </a>
+        </div>
+        <div class="row" style="margin-top: 2px; margin-bottom: 10px">
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="row"><spring:message code="products_name"/></th>
+                            <th scope="row"><spring:message code="calories_for_100"/></th>
+                            <th scope="row"><spring:message code="calories_for_serving"/></th>
+                            <th scope="row"><spring:message code="proteins"/></th>
+                            <th scope="row"><spring:message code="fats"/></th>
+                            <th scope="row"><spring:message code="carbohydrates"/></th>
+                            <th scope="row"><spring:message code="weight"/></th>
+                            <th scope="row">
+                                <form action="/add" method="get">
+                                    <button name="eating" value="SUPPER" class="btn btn-outline-dark"><spring:message code="add_product"/>
+                                    </button>
+                                </form>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="product" items="${dailyMenu.supper}">
+                            <tr>
+                                <th>${product.name}</th>
+                                <th>${product.nominalCalories}</th>
+                                <th>${product.factualCalories}</th>
+                                <th>${product.factualProtein}</th>
+                                <th>${product.factualFat}</th>
+                                <th>${product.factualCarbohydrates}</th>
+                                <th><c:forEach var="element" items="${productDailyMenuBreakfast}">
+                                    <c:if test="${element.product.name eq product.name}">
+                                        ${element.productWeight}
+                                    </c:if>
+                                </c:forEach></th>
+                                <th>
+                                    <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
+                                        <button name="eating" value="SUPPER" class="btn btn-outline-dark"><spring:message code="delete_product"/>
+                                        </button>
+                                    </form>
+                                </th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 2px; margin-bottom: 10px">
+            <div class="card card-body">
+                <table class="table table-borderless">
+                    <tbody>
+                    <tr>
+                        <th><spring:message code="calories"/>: ${dailyMenu.generalCalories}</th>
+                        <th><spring:message code="proteins"/>: ${dailyMenu.generalProteins}</th>
+                        <th><spring:message code="fats"/>: ${dailyMenu.generalFats}</th>
+                        <th><spring:message code="carbohydrates"/>: ${dailyMenu.generalCarbohydrates}</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form action="/" method="get">
+            <input class="inputButton" type="submit" value="Назад"/>
+        </form>
+    </div>
+</section>
 
-        </c:forEach>
-    </tr>
-    </tbody>
-    <tbody class="labels">
-    <tr>
-    <tr>
-        <td colspan="6">
-            <label><p>Обед</p></label>
-            <div>
-                <form action="/add" method="get">
-                    <button name="eating" value="DINNER" class="btn btn-outline-light">Добавить продукт</button>
-                </form>
-            </div>
-        </td>
-    </tr>
-    </tr>
-    </tbody>
-    <tr>
-        <c:forEach var="product" items="${dailyMenu.dinner}">
-            <br>
-            <td><span></span>${product.name}</td>
-            <td><span></span>${product.nominalCalories}</td>
-            <td><span></span>${product.factualCalories}</td>
-            <td><span></span>${product.factualProtein}</td>
-            <td><span></span>${product.factualFat}</td>
-            <td><span></span>${product.factualCarbohydrates}</td>
-            <td><span></span><c:forEach var="element" items="${productDailyMenuDinner}">
-                <c:if test="${element.product.name eq product.name}">
-                    ${element.productWeight}
-                </c:if>
-            </c:forEach>
-            </td>
-            <td><span></span>
-                <div class="center">
-                    <div class="center">
-                        <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
-                            <button name="eating" value="DINNER" class="btn btn-outline-light">Удалить продукт</button>
-                        </form>
-                    </div>
-                </div>
-            </td>
-        </c:forEach>
-    </tr>
-    <tbody class="labels">
-    <tr>
-        <td colspan="6">
-            <label><p>Ужин</p></label>
-            <div>
-                <form action="/add" method="get">
-                    <button name="eating" value="SUPPER" class="btn btn-outline-light">Добавить продукт</button>
-                </form>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-    <tr>
-        <c:forEach var="product" items="${dailyMenu.supper}">
-            <br>
-            <<td><span></span>${product.name}</td>
-            <td><span></span>${product.nominalCalories}</td>
-            <td><span></span>${product.factualCalories}</td>
-            <td><span></span>${product.factualProtein}</td>
-            <td><span></span>${product.factualFat}</td>
-            <td><span></span>${product.factualCarbohydrates}</td>
-            <td><span></span><c:forEach var="element" items="${productDailyMenuSupper}">
-                <c:if test="${element.product.name eq product.name}">
-                    ${element.productWeight}
-                </c:if>
-            </c:forEach>
-            </td>
-            <td><span></span>
-                <div class="center">
-                    <form action="/delete/${dailyMenu.id}/${product.id}" method="post">
-                        <button name="eating" value="SUPPER" class="btn btn-outline-light">Удалить продукт</button>
-                    </form>
-                </div>
-            </td>
-        </c:forEach>
-    </tr>
-    </tbody>
-    <tbody class="labels">
-    <tr>
-        <td colspan="6">
-            <label><p>Итого за день</p></label>
-        </td>
-    </tr>
-    </tbody>
-    <td></td>
-    <td>
-    <td><span></span>${dailyMenu.generalCalories}</td>
-    </td>
-    <td><span></span>${dailyMenu.generalProteins}</td>
-    <td><span></span>${dailyMenu.generalFats}</td>
-    <td><span></span>${dailyMenu.generalCarbohydrates}</td>
-</table>
-
-<div>
-    <form action="/" method="get">
-        <input class="inputButton" type="submit" value="Назад"/>
-    </form>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
