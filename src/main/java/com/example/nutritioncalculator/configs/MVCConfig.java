@@ -1,5 +1,6 @@
 package com.example.nutritioncalculator.configs;
 
+import lombok.SneakyThrows;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +12,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+import javax.crypto.Cipher;
 
 @Configuration
 public class MVCConfig implements WebMvcConfigurer {
@@ -24,7 +27,7 @@ public class MVCConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/login").setViewName("security/login");
         registry.addViewController("/").setViewName("posts/portalNews");
-        registry.addViewController("/customers/login");
+//        registry.addViewController("/customers/login");
         registry.addViewController("/registration").setViewName("/security/registration");
     }
 
@@ -48,6 +51,17 @@ public class MVCConfig implements WebMvcConfigurer {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor);
+    }
+
+    @SneakyThrows
+    @Bean
+    public Cipher cipher(){
+        return Cipher.getInstance("AES");
+    }
+
+    @Bean("getKey")
+    public String key() {
+        return "9s81al02ocbt7sjf";
     }
 
 }
