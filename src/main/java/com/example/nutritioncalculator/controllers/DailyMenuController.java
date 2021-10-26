@@ -3,16 +3,16 @@ package com.example.nutritioncalculator.controllers;
 import com.example.nutritioncalculator.controllers.dto.DailyMenuDto;
 import com.example.nutritioncalculator.controllers.dto.ProductDto;
 import com.example.nutritioncalculator.models.Eating;
-import com.example.nutritioncalculator.models.ProductDailyMenu;
 import com.example.nutritioncalculator.services.interfaces.DailyMenuService;
 import com.example.nutritioncalculator.services.interfaces.ProductDailyMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
-
 
 @Controller
 public class DailyMenuController {
@@ -41,7 +41,14 @@ public class DailyMenuController {
     }
 
     @PostMapping("/daily-menus/{dailyMenuId}/products")
-    public String addDailyMenu(@ModelAttribute("product") ProductDto product, @PathVariable("dailyMenuId") Integer dailyMenuId) {
+    public String addDailyMenu(@ModelAttribute("product") @Valid ProductDto product,
+                               BindingResult bindingResult,
+                               @PathVariable("dailyMenuId") Integer dailyMenuId) {
+
+        if (bindingResult.hasErrors()) {
+            return "dailymenu/addProductToDailyMenu";
+        }
+
         dailyMenuService.addProductToDailyMenu(dailyMenuId, product, Eating.valueOf(product.getEating()));
         return "redirect:/daily-menus";
     }

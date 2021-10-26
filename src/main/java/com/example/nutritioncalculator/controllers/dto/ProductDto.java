@@ -25,6 +25,7 @@ public class ProductDto {
     private int protein;
     @Min(value = 0, message = "Количество углеводов не может быть меньше 0")
     private int carbohydrates;
+    @Min(value = 1, message = "Вес не может быть меньше 1")
     private int weight;
     private int factualCalories;
     private int factualCarbohydrates;

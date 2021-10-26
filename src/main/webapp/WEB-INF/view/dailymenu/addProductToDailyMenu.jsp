@@ -85,7 +85,8 @@
             Protein: <form:textarea rows="1" path="protein" readonly="true"/><br>
             Fat: <form:textarea rows="1" path="fat" readonly="true"/><br>
             Carbohydrates: <form:textarea rows="1" path="carbohydrates" readonly="true"/><br>
-            Weight: <form:input rows="1" path="weight"/><br>
+            Weight: <form:input path="weight"/><br>
+            <form:errors path="weight"/>
             <input type="hidden" value="${eating}" name="eating" id="eating">
             <button class="submit-button" type="submit">+</button>
         </form:form>
