@@ -29,11 +29,13 @@
                 <div class="form-floating">
                     <input type="text" class="form-control" name='login' id="floatingInput" placeholder="Login">
                     <label for="floatingInput"><spring:message code="login"/></label>
+                    <form:errors path="login"/>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" name='password' id="floatingPassword"
                            placeholder="Password">
                     <label for="floatingPassword"><spring:message code="password"/></label>
+                    <form:errors path="password"/>
                 </div>
                 <button class="w-100 btn btn-lg btn-primary" type="submit"><spring:message code="registration"/></button>
             </form:form>

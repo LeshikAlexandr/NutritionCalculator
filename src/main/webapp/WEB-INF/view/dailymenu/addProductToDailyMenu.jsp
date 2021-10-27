@@ -9,26 +9,6 @@
     <meta charset="UTF-8">
     <title>Add product</title>
     <style>
-        .header {
-            padding: 80px;
-            text-align: center;
-            background: #1abc9c;
-            color: white;
-        }
-
-        .icon_de {
-            float: left;
-            margin: 0;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            position: sticky;
-            position: -webkit-sticky;
-            top: 0;
-        }
-
         .navbar a {
             float: left;
             display: block;
@@ -48,7 +28,6 @@
             color: black;
         }
 
-        /* Active/current link */
         .navbar a.active {
             background-color: #666;
             color: white;
@@ -76,21 +55,34 @@
 
 <div class="cont">
     <c:if test="${product != null}">
-        <form:form action="/daily-menus/${dailyMenu.id}/products" method="post" modelAttribute="product">
+    <form:form action="/daily-menus/${dailyMenu.id}/products" method="post" modelAttribute="product">
 
-            <form:hidden path="id"/>
+    <form:hidden path="id"/>
 
-            Name: <form:textarea rows="1" path="name" readonly="true"   /><br>
-            Nominal calories <form:textarea rows="1" path="nominalCalories" readonly="true"/><br>
-            Protein: <form:textarea rows="1" path="protein" readonly="true"/><br>
-            Fat: <form:textarea rows="1" path="fat" readonly="true"/><br>
-            Carbohydrates: <form:textarea rows="1" path="carbohydrates" readonly="true"/><br>
-            Weight: <form:input path="weight"/><br>
+    <fieldset>
+        <div class="pure-control-group">
+            <spring:message code="products_name"/>: <form:textarea rows="1" path="name" readonly="true"/><
+        </div>
+        <div class="pure-control-group">
+            <spring:message code="calories"/>: <form:textarea rows="1" path="nominalCalories" readonly="true"/>
+        </div>
+        <div class="pure-control-group">
+            <spring:message code="proteins"/>: <form:textarea rows="1" path="protein" readonly="true"/>
+        </div>
+        <div class="pure-control-group">
+            <spring:message code="fats"/>: <form:textarea rows="1" path="fat" readonly="true"/>
+        </div>
+        <div class="pure-control-group">
+            <spring:message code="carbohydrates"/>: <form:textarea rows="1" path="carbohydrates" readonly="true"/>
+        </div>
+        <div class="pure-control-group">
+            <spring:message code="weight"/> <form:input path="weight"/><
             <form:errors path="weight"/>
-            <input type="hidden" value="${eating}" name="eating" id="eating">
-            <button class="submit-button" type="submit">+</button>
+        </div>
+        <input type="hidden" value="${eating}" name="eating" id="eating">
+        <button class="submit-button" type="submit">+</button>
         </form:form>
-    </c:if>
+        </c:if>
 
 </div>
 </body>

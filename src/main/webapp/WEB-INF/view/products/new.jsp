@@ -61,10 +61,7 @@
                 <form:errors path="carbohydrates"/>
             </div>
             <p></p>
-
-            <form action="products/new" method="get">
                 <button type="submit" class="btn btn-outline-dark"><spring:message code="add_product"/></button>
-            </form>
         </fieldset>
     </form:form>
 </div>
