@@ -2,6 +2,8 @@ package com.example.nutritioncalculator.controllers;
 
 import com.example.nutritioncalculator.controllers.dto.CustomerRegistrationDto;
 import com.example.nutritioncalculator.services.interfaces.CustomerService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
+
+    private static final Logger logger = LogManager.getLogger(RegistrationController.class);
 
     @Autowired
     private CustomerService customerService;
@@ -30,9 +34,11 @@ public class RegistrationController {
             return "security/registration";
         }
         if (!customerService.saveCustomer(customerRegistrationDto)) {
+
             model.addAttribute("customerError", "Пользователь с таким именем уже существует");
             return "security/registration";
         }
+        logger.info(customerRegistrationDto.getLogin() + " was created");
         return "redirect:/";
     }
 }

@@ -7,6 +7,8 @@ import com.example.nutritioncalculator.models.Post;
 import com.example.nutritioncalculator.services.interfaces.CommentService;
 import com.example.nutritioncalculator.services.interfaces.CustomerService;
 import com.example.nutritioncalculator.services.interfaces.PostService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/posts")
 public class PostController {
+
+    private static final Logger logger = LogManager.getLogger(PostController.class);
 
     @Autowired
     private PostService postService;
@@ -47,6 +51,7 @@ public class PostController {
             return "posts/new";
         }
         postService.savePost(file, postDto, principal.getName());
+        logger.info("Post was created");
         return "redirect:/";
     }
 
